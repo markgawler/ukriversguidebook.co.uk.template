@@ -1,0 +1,6 @@
+{
+    "require": {
+        "twbs/bootstrap": "3.2.*"
+        
+    }
+}
