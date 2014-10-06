@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
 				// Task configuration.
 				clean : {
-					dist : [ 'fonts','js/bootstrap*.js','css/bootstrap*.css' ]
+					dist : [ 'ukrgb/fonts','ukrgb/js/bootstrap*.js','ukrgb/css/bootstrap*.css','ukrgb/css/bootstrap*.map', 'ukrgb.zip']
 				},
 
 				concat : {
@@ -29,19 +29,19 @@ module.exports = function(grunt) {
 						stripBanners : false
 					},
 					bootstrap : {
-						src : [ '../vendor/twbs/bootstrap/js/transition.js',
-								'../vendor/twbs/bootstrap/js/alert.js',
-								'../vendor/twbs/bootstrap/js/button.js',
-								'../vendor/twbs/bootstrap/js/carousel.js',
-								'../vendor/twbs/bootstrap/js/collapse.js',
-								'../vendor/twbs/bootstrap/js/dropdown.js',
-								'../vendor/twbs/bootstrap/js/modal.js',
-								'../vendor/twbs/bootstrap/js/tooltip.js',
-								'../vendor/twbs/bootstrap/js/popover.js',
-								'../vendor/twbs/bootstrap/js/scrollspy.js',
-								'../vendor/twbs/bootstrap/js/tab.js',
-								'../vendor/twbs/bootstrap/js/affix.js' ],
-						dest : 'js/<%= pkg.name %>.js'
+						src : [ 'vendor/twbs/bootstrap/js/transition.js',
+								'vendor/twbs/bootstrap/js/alert.js',
+								'vendor/twbs/bootstrap/js/button.js',
+								'vendor/twbs/bootstrap/js/carousel.js',
+								'vendor/twbs/bootstrap/js/collapse.js',
+								'vendor/twbs/bootstrap/js/dropdown.js',
+								'vendor/twbs/bootstrap/js/modal.js',
+								'vendor/twbs/bootstrap/js/tooltip.js',
+								'vendor/twbs/bootstrap/js/popover.js',
+								'vendor/twbs/bootstrap/js/scrollspy.js',
+								'vendor/twbs/bootstrap/js/tab.js',
+								'vendor/twbs/bootstrap/js/affix.js' ],
+						dest : 'ukrgb/js/<%= pkg.name %>.js'
 					}
 				},
 
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 					},
 					bootstrap : {
 						src : '<%= concat.bootstrap.dest %>',
-						dest : 'js/<%= pkg.name %>.min.js'
+						dest : 'ukrgb/js/<%= pkg.name %>.min.js'
 					}
 				},
 
@@ -63,10 +63,10 @@ module.exports = function(grunt) {
 							sourceMap : true,
 							outputSourceFiles : true,
 							sourceMapURL : '<%= pkg.name %>.css.map',
-							sourceMapFilename : 'css/<%= pkg.name %>.css.map'
+							sourceMapFilename : 'ukrgb/css/<%= pkg.name %>.css.map'
 						},
 						files : {
-							'css/<%= pkg.name %>.css' : 'less/bootstrap.less'
+							'ukrgb/css/<%= pkg.name %>.css' : 'ukrgb/less/bootstrap.less'
 						}
 					},
 					compileTheme : {
@@ -75,10 +75,10 @@ module.exports = function(grunt) {
 							sourceMap : true,
 							outputSourceFiles : true,
 							sourceMapURL : '<%= pkg.name %>-theme.css.map',
-							sourceMapFilename : 'css/<%= pkg.name %>-theme.css.map'
+							sourceMapFilename : 'ukrgb/css/<%= pkg.name %>-theme.css.map'
 						},
 						files : {
-							'css/<%= pkg.name %>-theme.css' : '../vendor/twbs/bootstrap/less/theme.less'
+							'ukrgb/css/<%= pkg.name %>-theme.css' : 'vendor/twbs/bootstrap/less/theme.less'
 						}
 					}
 				},
@@ -96,13 +96,13 @@ module.exports = function(grunt) {
 						options : {
 							map : true
 						},
-						src : 'css/<%= pkg.name %>.css'
+						src : 'ukrgb/css/<%= pkg.name %>.css'
 					},
 					theme : {
 						options : {
 							map : true
 						},
-						src : 'css/<%= pkg.name %>-theme.css'
+						src : 'ukrgb/css/<%= pkg.name %>-theme.css'
 					}
 				},
 				cssmin : {
@@ -113,8 +113,8 @@ module.exports = function(grunt) {
 					},
 					core : {
 						files : {
-							'css/<%= pkg.name %>.min.css' : 'css/<%= pkg.name %>.css',
-							'css/<%= pkg.name %>-theme.min.css' : 'css/<%= pkg.name %>-theme.css'
+							'ukrgb/css/<%= pkg.name %>.min.css' : 'ukrgb/css/<%= pkg.name %>.css',
+							'ukrgb/css/<%= pkg.name %>-theme.min.css' : 'ukrgb/css/<%= pkg.name %>-theme.css'
 						}
 					}
 				},
@@ -125,30 +125,41 @@ module.exports = function(grunt) {
 						banner : '<%= banner %>'
 					},
 					files : {
-						src : 'css/*.css'
+						src : 'ukrgb/css/*.css'
 					}
 				},
 
 				csscomb : {
 					options : {
-						config : 'less/.csscomb.json'
+						config : 'ukrgb/less/.csscomb.json'
 					},
 					dist : {
 						expand : true,
-						cwd : 'css/',
+						cwd : 'ukrgb/css/',
 						src : [ '*.css', '!*.min.css' ],
-						dest : 'css/'
+						dest : 'ukrgb/css/'
 					}
 				},
 				copy : {
 					fonts : {
 						expand : true,
-						src : '../vendor/twbs/bootstrap/fonts/*',
-						dest : 'fonts/',
+						src : 'vendor/twbs/bootstrap/fonts/*',
+						dest : 'ukrgb/fonts/',
 						flatten : true
 
 					}
-				}
+				},
+				
+				compress: {
+					  main: {
+					    options: {
+					      archive: 'ukrgb.zip'
+					    },
+					    files: [
+					      {src: ['ukrgb/**', '!ukrgb/less/**'],	  dest: '.'}
+					    ]
+					  }
+					}
 
 			});
 
@@ -168,9 +179,7 @@ module.exports = function(grunt) {
 			'usebanner', 'csscomb', 'cssmin' ]);
 
 	// Full distribution task.
-	grunt
-			.registerTask('dist', [ 'clean', 'dist-css', 'copy:fonts',
-					'dist-js' ]);
+	grunt.registerTask('dist', [ 'clean', 'dist-css', 'copy:fonts',	'dist-js', 'compress' ]);
 	grunt.registerTask('default', [ 'dist' ]);
 
 };

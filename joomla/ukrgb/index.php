@@ -23,23 +23,16 @@ $phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : 
 
 // Add JavaScript Frameworks
 //JHtml::_('bootstrap.framework');
-//JHtml::_('jquery.framework');
+JHtml::_('jquery.framework');
 
 
-$doc->addStyleSheet('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
-
-//<!-- Optional theme -->
-//<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-//<!-- Latest compiled and minified JavaScript -->
-$doc->addScript('https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js');
-
-//$doc->addScript('templates/' .$this->template. '/js/template.js');
+//$doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.min.css');
+$doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
+//$doc->addScript('templates/'.$this->template.'/js/bootstrap.min.js');
+$doc->addScript('templates/' .$this->template. '/js/bootstrap.js');
 
 // Add Stylesheets
-$doc->addStyleSheet('templates/'.$this->template.'/css/template.css');
-$doc->addStyleSheet('templates/'.$this->template.'/css/tweek.css');
-//$doc->addStyleSheet('templates/'.$this->template.'/css/tweeks.css');
+//$doc->addStyleSheet('templates/'.$this->template.'/css/template.css');
 
 // Add current user information
 $user = JFactory::getUser();
@@ -60,14 +53,18 @@ $user = JFactory::getUser();
 </head>
 
 <body>
-	<div id="wrapper" class="container bg">
+	<div id="wrapper" class="container-fluid bg">
 		<!-- Headder -->
 		<div id="wrapper-header">
-			<div id="header" class="row">
-				<div id="logo" class="col-md-12">
-					<img class="img-responsive" src="http://placehold.it/1170x100">
-					<!--  <jdoc:include type="modules" name="logo" style="xhtml" />
-	            -->
+			<div id="header" class="row logo">
+				<div id="logo" class="col-md-6">
+					<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
+					<img class="img-responsive" src="templates/<?php echo $this->template;?>/images/banner.jpg">
+					<!--  <jdoc:include type="modules" name="logo" style="xhtml" />	-->
+				</div>
+				<div class="col-md-6">
+					<h1>UKRGB</h1>
+					<h1>The UK Rivers Guidebook</h1>
 				</div>
 				<!-- end logo -->
 			</div>
@@ -166,7 +163,7 @@ $user = JFactory::getUser();
 
 		<!-- Footer -->
 		<footer class="footer" role="contentinfo">
-			<div class="container">
+			<div class="container-fluid">
 				<!-- <hr /> -->
 				<jdoc:include type="modules" name="footer" style="none" />
 				<p class="pull-right">

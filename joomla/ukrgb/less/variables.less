@@ -13,7 +13,11 @@
 @gray-light:             lighten(#000, 46.7%); // #777
 @gray-lighter:           lighten(#000, 93.5%); // #eee
 
-@brand-primary:         #428bca;
+
+@blue-darker:			#0e99df; // darker blue phpBB
+@blue-lighter:			#105289; //phpBB light Blue 
+
+@brand-primary:         @blue-lighter; //phpBB light Blue //#428bca;
 @brand-success:         #5cb85c;
 @brand-info:            #5bc0de;
 @brand-warning:         #f0ad4e;
@@ -25,14 +29,15 @@
 //## Settings for some of the most global styles.
 
 //** Background color for `<body>`.
-@body-bg:               #fff;
+@body-bg:               #fff; //white
 //** Global text color on `<body>`.
 @text-color:            @gray-dark;
 
 //** Global textual link color.
 @link-color:            @brand-primary;
 //** Link hover color set via `darken()` function.
-@link-hover-color:      darken(@link-color, 15%);
+//@link-hover-color:      darken(@link-color, 15%);
+@link-hover-color:      #d41141; //phpBB Red 
 
 
 //== Typography
@@ -342,15 +347,19 @@
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 @navbar-collapse-max-height:       340px;
 
-@navbar-default-color:             #777;
-@navbar-default-bg:                #f8f8f8;
+//@navbar-default-color:             #777;
+//@navbar-default-bg:                #f8f8f8;
+
+@navbar-default-color:             #eceff1;
+@navbar-default-bg:                @blue-darker; // light blue phpBB border
+
 @navbar-default-border:            darken(@navbar-default-bg, 6.5%);
 
 // Navbar links
-@navbar-default-link-color:                #777;
-@navbar-default-link-hover-color:          #333;
+@navbar-default-link-color:                #eceff1; //#777;
+@navbar-default-link-hover-color:          #fff; //#333;
 @navbar-default-link-hover-bg:             transparent;
-@navbar-default-link-active-color:         #555;
+@navbar-default-link-active-color:          #fff; //#555;
 @navbar-default-link-active-bg:            darken(@navbar-default-bg, 6.5%);
 @navbar-default-link-disabled-color:       #ccc;
 @navbar-default-link-disabled-bg:          transparent;
@@ -764,16 +773,16 @@
 //
 //##
 
-@breadcrumb-padding-vertical:   8px;
+@breadcrumb-padding-vertical:   6px; //8px;
 @breadcrumb-padding-horizontal: 15px;
 //** Breadcrumb background color
-@breadcrumb-bg:                 #f5f5f5;
+@breadcrumb-bg:                 #CADCEB; //#f5f5f5;
 //** Breadcrumb text color
 @breadcrumb-color:              #ccc;
 //** Text color of current page in the breadcrumb
 @breadcrumb-active-color:       @gray-light;
 //** Textual separator for between breadcrumb elements
-@breadcrumb-separator:          "/";
+@breadcrumb-separator:          ""; // "/";
 
 
 //== Carousel

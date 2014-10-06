@@ -1,8 +1,8 @@
 #!/bin/bash
-
-lessc ukrgb/less/template.less ukrgb/css/template.css
-echo "Creating Zip..."
-zip -qr ukrgb ukrgb/*
+grunt
+#lessc ukrgb/less/template.less ukrgb/css/template.css
+#echo "Creating Zip..."
+#zip -qr ukrgb ukrgb/*
 
 
 #SSH="ssh -i /home/mrfg/.ssh/J3Dev1.pem"
