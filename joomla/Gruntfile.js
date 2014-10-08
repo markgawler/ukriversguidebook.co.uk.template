@@ -159,8 +159,22 @@ module.exports = function(grunt) {
 					      {src: ['ukrgb/**', '!ukrgb/less/**'],	  dest: '.'}
 					    ]
 					  }
-					}
-
+					},
+				
+				rsync: {
+				    options: {
+				        //args: ["--verbose"],
+				        exclude: [".git*","node_modules"],
+				        recursive: true
+				    },
+				    dist: {
+				        options: {
+				            src: "ukrgb/",
+				            dest: "/http/ukrgb/joomla/templates/ukrgb/", 
+				            host: "mrfg@ukrgb-joomla3.homedomain"
+				        }
+				    }
+				}
 			});
 
 	// These plugins provide necessary tasks.
@@ -179,7 +193,9 @@ module.exports = function(grunt) {
 			'usebanner', 'csscomb', 'cssmin' ]);
 
 	// Full distribution task.
-	grunt.registerTask('dist', [ 'clean', 'dist-css', 'copy:fonts',	'dist-js', 'compress' ]);
-	grunt.registerTask('default', [ 'dist' ]);
+	grunt.registerTask('dist', [ 'clean', 'dist-css', 'copy:fonts',	'dist-js' ]);
+	grunt.registerTask('stage', ['dist','rsync']);
+	grunt.registerTask('release', ['dist','compress']);
+	grunt.registerTask('default', [ 'stage' ]);
 
 };
