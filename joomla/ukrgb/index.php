@@ -21,10 +21,6 @@ $sitename = $app->getCfg('sitename');
 $itemid   = $app->input->getCmd('Itemid', '');
 $phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 
-// Add JavaScript Frameworks
-//JHtml::_('bootstrap.framework');
-JHtml::_('jquery.framework');
-
 
 //$doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.min.css');
 $doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
@@ -41,7 +37,7 @@ $user = JFactory::getUser();
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<jdoc:include type="head" />
+<jdoc:include type="head" /> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -108,7 +104,11 @@ $user = JFactory::getUser();
 							<!-- <input type="text" class="form-control" placeholder="Search"> -->
 						</div>
 					</form>
-					<ul class="nav navbar-nav navbar-right">
+					<ul class="nav navbar-nav navbar-
+
+defined('_JEXEC') or die;
+
+$app = JFactory::getApplication();right">
 						<li class="navbar-form"><jdoc:include type="modules" name="search" style="none" /></li>
 						<!-- The drop down menu -->
           				<li class="dropdown">
