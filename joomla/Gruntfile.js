@@ -20,8 +20,8 @@ module.exports = function(grunt) {
 
 				// Task configuration.
 				clean : {
-					dist : [ 'ukrgb/fonts','ukrgb/js/bootstrap*.js','ukrgb/css/bootstrap*.css','ukrgb/css/bootstrap*.map', 'ukrgb.zip']
-				},
+					dist : ['ukrgb/js/bootstrap*.js','ukrgb/css/bootstrap*.css','ukrgb/css/bootstrap*.map', 'ukrgb.zip']
+					},
 
 				concat : {
 					options : {
@@ -68,18 +68,6 @@ module.exports = function(grunt) {
 						files : {
 							'ukrgb/css/<%= pkg.name %>.css' : 'ukrgb/less/bootstrap.less'
 						}
-					},
-					compileTheme : {
-						options : {
-							strictMath : true,
-							sourceMap : true,
-							outputSourceFiles : true,
-							sourceMapURL : '<%= pkg.name %>-theme.css.map',
-							sourceMapFilename : 'ukrgb/css/<%= pkg.name %>-theme.css.map'
-						},
-						files : {
-							'ukrgb/css/<%= pkg.name %>-theme.css' : 'vendor/twbs/bootstrap/less/theme.less'
-						}
 					}
 				},
 				autoprefixer : {
@@ -97,12 +85,6 @@ module.exports = function(grunt) {
 							map : true
 						},
 						src : 'ukrgb/css/<%= pkg.name %>.css'
-					},
-					theme : {
-						options : {
-							map : true
-						},
-						src : 'ukrgb/css/<%= pkg.name %>-theme.css'
 					}
 				},
 				cssmin : {
@@ -113,8 +95,7 @@ module.exports = function(grunt) {
 					},
 					core : {
 						files : {
-							'ukrgb/css/<%= pkg.name %>.min.css' : 'ukrgb/css/<%= pkg.name %>.css',
-							'ukrgb/css/<%= pkg.name %>-theme.min.css' : 'ukrgb/css/<%= pkg.name %>-theme.css'
+							'ukrgb/css/<%= pkg.name %>.min.css' : 'ukrgb/css/<%= pkg.name %>.css'//,
 						}
 					}
 				},
@@ -141,15 +122,21 @@ module.exports = function(grunt) {
 					}
 				},
 				copy : {
-					fonts : {
+					/*fonts : {
 						expand : true,
 						src : 'vendor/twbs/bootstrap/fonts/*',
 						dest : 'ukrgb/fonts/',
 						flatten : true
 
+					}*/
+					jquery : {
+						expand : true,
+						src : 'vendor/components/jquery/jquery.min.js',
+						dest : 'ukrgb/js/',
+						flatten : true
 					}
 				},
-				
+								
 				compress: {
 					  main: {
 					    options: {
@@ -163,14 +150,15 @@ module.exports = function(grunt) {
 				
 				rsync: {
 				    options: {
-				        //args: ["--verbose"],
-				        exclude: [".git*","node_modules"],
+				        args: ["--verbose"],
+				        exclude: [".git*","node_modules","less"],
 				        recursive: true
 				    },
 				    dist: {
 				        options: {
 				            src: "ukrgb/",
 				            dest: "/http/ukrgb/joomla/templates/ukrgb/", 
+				            //dest: "ukrgb/", 
 				            host: "mrfg@ukrgb-joomla3.homedomain"
 				        }
 				    }
@@ -187,14 +175,14 @@ module.exports = function(grunt) {
 	grunt.registerTask('dist-js', [ 'concat', 'uglify' ]);
 
 	// CSS distribution task.
-	grunt.registerTask('less-compile', [ 'less:compileCore',
-			'less:compileTheme' ]);
+	grunt.registerTask('less-compile', [ 'less:compileCore' ]);
 	grunt.registerTask('dist-css', [ 'less-compile', 'autoprefixer',
 			'usebanner', 'csscomb', 'cssmin' ]);
 
 	// Full distribution task.
-	grunt.registerTask('dist', [ 'clean', 'dist-css', 'copy:fonts',	'dist-js' ]);
+	grunt.registerTask('dist', [ 'clean', 'dist-css', 'dist-js', 'copy' ]);
 	grunt.registerTask('stage', ['dist','rsync']);
+	grunt.registerTask('rsync-only', ['rsync']);
 	grunt.registerTask('release', ['dist','compress']);
 	grunt.registerTask('default', [ 'stage' ]);
 

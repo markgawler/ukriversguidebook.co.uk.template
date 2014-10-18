@@ -4,8 +4,215 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0e2f5ff81ac22a7857e65d3f5c2043da",
+    "hash": "94ae62f5a91d144c8fcbe510a26de618",
     "packages": [
+        {
+            "name": "components/jquery",
+            "version": "1.11.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/components/jquery.git",
+                "reference": "923b3973ed5b6e465a621d3032106fc6832a9a3c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/components/jquery/zipball/923b3973ed5b6e465a621d3032106fc6832a9a3c",
+                "reference": "923b3973ed5b6e465a621d3032106fc6832a9a3c",
+                "shasum": ""
+            },
+            "require": {
+                "robloach/component-installer": "*"
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "scripts": [
+                        "jquery.js"
+                    ],
+                    "files": [
+                        "jquery.min.js",
+                        "jquery-migrate.js",
+                        "jquery-migrate.min.js",
+                        "jquery.min.map"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "John Resig",
+                    "email": "jeresig@gmail.com"
+                }
+            ],
+            "description": "jQuery JavaScript Library",
+            "homepage": "http://jquery.com",
+            "time": "2014-10-10 05:49:59"
+        },
+        {
+            "name": "kriswallsmith/assetic",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kriswallsmith/assetic.git",
+                "reference": "735cffd3982c6e8cdebe292d5db39d077f65890f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/735cffd3982c6e8cdebe292d5db39d077f65890f",
+                "reference": "735cffd3982c6e8cdebe292d5db39d077f65890f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.1",
+                "symfony/process": "~2.1"
+            },
+            "require-dev": {
+                "cssmin/cssmin": "*",
+                "joliclic/javascript-packer": "*",
+                "kamicane/packager": "*",
+                "leafo/lessphp": "*",
+                "leafo/scssphp": "*",
+                "leafo/scssphp-compass": "*",
+                "mrclay/minify": "*",
+                "phpunit/phpunit": "~3.7",
+                "ptachoire/cssembed": "*",
+                "twig/twig": "~1.6"
+            },
+            "suggest": {
+                "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
+                "leafo/scssphp": "Assetic provides the integration with the scssphp SCSS compiler",
+                "leafo/scssphp-compass": "Assetic provides the integration with the SCSS compass plugin",
+                "ptachoire/cssembed": "Assetic provides the integration with phpcssembed to embed data uris",
+                "twig/twig": "Assetic provides the integration with the Twig templating engine"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Assetic": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Asset Management for PHP",
+            "homepage": "https://github.com/kriswallsmith/assetic",
+            "keywords": [
+                "assets",
+                "compression",
+                "minification"
+            ],
+            "time": "2013-07-19 00:03:27"
+        },
+        {
+            "name": "robloach/component-installer",
+            "version": "0.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/RobLoach/component-installer.git",
+                "reference": "1864f25db21fc173e02a359f646acd596c1b0460"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/RobLoach/component-installer/zipball/1864f25db21fc173e02a359f646acd596c1b0460",
+                "reference": "1864f25db21fc173e02a359f646acd596c1b0460",
+                "shasum": ""
+            },
+            "require": {
+                "kriswallsmith/assetic": "1.*",
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "composer/composer": "1.*"
+            },
+            "type": "composer-installer",
+            "extra": {
+                "class": "ComponentInstaller\\Installer"
+            },
+            "autoload": {
+                "psr-0": {
+                    "ComponentInstaller": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rob Loach",
+                    "email": "robloach@gmail.com",
+                    "homepage": "http://robloach.net"
+                }
+            ],
+            "description": "Allows installation of Components via Composer.",
+            "time": "2013-08-31 23:46:48"
+        },
+        {
+            "name": "symfony/process",
+            "version": "v2.5.5",
+            "target-dir": "Symfony/Component/Process",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Process.git",
+                "reference": "8a1ec96c4e519cee0fb971ea48a1eb7369dda54b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/8a1ec96c4e519cee0fb971ea48a1eb7369dda54b",
+                "reference": "8a1ec96c4e519cee0fb971ea48a1eb7369dda54b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.5-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Process\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Process Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-09-23 05:25:11"
+        },
         {
             "name": "twbs/bootstrap",
             "version": "v3.2.0",

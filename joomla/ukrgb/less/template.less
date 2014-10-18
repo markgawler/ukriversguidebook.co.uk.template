@@ -1,6 +1,9 @@
 @import (reference) "mixins.less";
 @import (reference) "variables.less";
 
+
+@navbar-hover: darken(@navbar-default-bg, 12%);
+
 .breadcrumb {
 	font-size: 12px;
 	margin-bottom: 10px;
@@ -16,18 +19,19 @@
 			
 			&:hover,
 	        &:focus {
-				background-color: #016999; //#279fdb;
+				background-color: @navbar-hover;
 				}
 			}
 		> li > a {
 			
 			&:hover,
 	        &:focus {
-				background-color: #0c8ac9; //#46acdb;
+				background-color: @navbar-hover;
 				}
 			}
 		}
 	}
+	
 
 
 
@@ -87,3 +91,4 @@ body {
 		color: #fff;
 	}
 }
+

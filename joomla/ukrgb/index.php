@@ -8,6 +8,9 @@
 */
 
 defined('_JEXEC') or die;
+//var_dump($this->_scripts);
+//die();
+unset($this->_scripts);
 
 // Getting params from template
 //$params = JFactory::getApplication()->getTemplate(true)->params;
@@ -19,16 +22,18 @@ $sitename = $app->getCfg('sitename');
 
 // Check for forum
 $itemid   = $app->input->getCmd('Itemid', '');
-$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
+//$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 
 
-//$doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.min.css');
 $doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
-//$doc->addScript('templates/'.$this->template.'/js/bootstrap.min.js');
+
+//JHtml::_('jquery.framework');
+$doc->addScript('templates/' .$this->template. '/js/jquery.min.js');
+//$doc->addScript('templates/' .$this->template. '/js/jquery-noconflict.js');
+$doc->addScriptDeclaration('jQuery.noConflict();');
 $doc->addScript('templates/' .$this->template. '/js/bootstrap.js');
 
-// Add Stylesheets
-//$doc->addStyleSheet('templates/'.$this->template.'/css/template.css');
+$doc->addScript('media/system/js/caption.js');
 
 // Add current user information
 $user = JFactory::getUser();
@@ -104,11 +109,7 @@ $user = JFactory::getUser();
 							<!-- <input type="text" class="form-control" placeholder="Search"> -->
 						</div>
 					</form>
-					<ul class="nav navbar-nav navbar-
-
-defined('_JEXEC') or die;
-
-$app = JFactory::getApplication();right">
+					<ul class="nav navbar-nav navbar-right">
 						<li class="navbar-form"><jdoc:include type="modules" name="search" style="none" /></li>
 						<!-- The drop down menu -->
           				<li class="dropdown">
