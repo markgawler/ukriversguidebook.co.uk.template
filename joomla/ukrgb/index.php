@@ -25,11 +25,9 @@ $itemid   = $app->input->getCmd('Itemid', '');
 //$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 
 $doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
-
 $doc->addScript('templates/' .$this->template. '/js/jquery.min.js');
 //$doc->addScriptDeclaration('jQuery.noConflict();');
 $doc->addScript('templates/' .$this->template. '/js/bootstrap.js');
-
 $doc->addScript('media/system/js/caption.js');
 
 // Add current user information
