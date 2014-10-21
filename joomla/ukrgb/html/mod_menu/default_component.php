@@ -32,7 +32,7 @@ if ($item->deeper)
 	if ($item->level == 1)
 	{
 		$dt = 'class="dropdown-toggle" data-toggle="dropdown" ';
-		//$link = '#';
+		#$link = '#';
 		$caret = ' <span class="caret"></span>';
 	}
 }

@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 //die();
 unset($this->_scripts);
 
-// Getting params from template
+//Getting params from template
 //$params = JFactory::getApplication()->getTemplate(true)->params;
 
 $app = JFactory::getApplication();
@@ -26,7 +26,8 @@ $itemid   = $app->input->getCmd('Itemid', '');
 
 $doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
 $doc->addScript('templates/' .$this->template. '/js/jquery.min.js');
-//$doc->addScriptDeclaration('jQuery.noConflict();');
+//$doc->addScript('templates/' .$this->template. '/js/jquery-noconflict.js');
+$doc->addScriptDeclaration('jQuery.noConflict();');
 $doc->addScript('templates/' .$this->template. '/js/bootstrap.js');
 $doc->addScript('media/system/js/caption.js');
 
@@ -119,7 +120,7 @@ $user = JFactory::getUser();
           				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign In <span class="caret"></span></a>
           					<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
               					<!-- Login form here -->
-								<jdoc:include type="modules" name="login" style="none" />
+								<jdoc:include type="modules" name="login" style="none" /> 
 							</div>
 						<?php }?>
 						</li>
