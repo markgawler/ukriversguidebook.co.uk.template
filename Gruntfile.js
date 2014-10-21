@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 
 				// Task configuration.
 				clean : {
-					dist : ['ukrgb/js/bootstrap*.js','ukrgb/css/bootstrap*.css','ukrgb/css/bootstrap*.map', 'ukrgb.zip']
+					dist : ['joomla/ukrgb/js/bootstrap*.js','joomla/ukrgb/css/bootstrap*.css','joomla/ukrgb/css/bootstrap*.map', 'joomla/ukrgb.zip']
 					},
 
 				concat : {
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
 								'vendor/twbs/bootstrap/js/scrollspy.js',
 								'vendor/twbs/bootstrap/js/tab.js',
 								'vendor/twbs/bootstrap/js/affix.js' ],
-						dest : 'ukrgb/js/<%= pkg.name %>.js'
+						dest : 'joomla/ukrgb/js/<%= pkg.name %>.js'
 					}
 				},
 
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 					},
 					bootstrap : {
 						src : '<%= concat.bootstrap.dest %>',
-						dest : 'ukrgb/js/<%= pkg.name %>.min.js'
+						dest : 'joomla/ukrgb/js/<%= pkg.name %>.min.js'
 					}
 				},
 
@@ -63,10 +63,10 @@ module.exports = function(grunt) {
 							sourceMap : true,
 							outputSourceFiles : true,
 							sourceMapURL : '<%= pkg.name %>.css.map',
-							sourceMapFilename : 'ukrgb/css/<%= pkg.name %>.css.map'
+							sourceMapFilename : 'joomla/ukrgb/css/<%= pkg.name %>.css.map'
 						},
 						files : {
-							'ukrgb/css/<%= pkg.name %>.css' : 'ukrgb/less/bootstrap.less'
+							'joomla/ukrgb/css/<%= pkg.name %>.css' : 'joomla/ukrgb/less/bootstrap.less'
 						}
 					}
 				},
@@ -84,7 +84,7 @@ module.exports = function(grunt) {
 						options : {
 							map : true
 						},
-						src : 'ukrgb/css/<%= pkg.name %>.css'
+						src : 'joomla/ukrgb/css/<%= pkg.name %>.css'
 					}
 				},
 				cssmin : {
@@ -95,7 +95,7 @@ module.exports = function(grunt) {
 					},
 					core : {
 						files : {
-							'ukrgb/css/<%= pkg.name %>.min.css' : 'ukrgb/css/<%= pkg.name %>.css'//,
+							'joomla/ukrgb/css/<%= pkg.name %>.min.css' : 'joomla/ukrgb/css/<%= pkg.name %>.css'//,
 						}
 					}
 				},
@@ -106,19 +106,19 @@ module.exports = function(grunt) {
 						banner : '<%= banner %>'
 					},
 					files : {
-						src : 'ukrgb/css/*.css'
+						src : 'joomla/ukrgb/css/*.css'
 					}
 				},
 
 				csscomb : {
 					options : {
-						config : 'ukrgb/less/.csscomb.json'
+						config : 'joomla/ukrgb/less/.csscomb.json'
 					},
 					dist : {
 						expand : true,
-						cwd : 'ukrgb/css/',
+						cwd : 'joomla/ukrgb/css/',
 						src : [ '*.css', '!*.min.css' ],
-						dest : 'ukrgb/css/'
+						dest : 'joomla/ukrgb/css/'
 					}
 				},
 				copy : {
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
 					jquery : {
 						expand : true,
 						src : 'vendor/components/jquery/jquery.min.js',
-						dest : 'ukrgb/js/',
+						dest : 'joomla/ukrgb/js/',
 						flatten : true
 					}
 				},
@@ -140,10 +140,10 @@ module.exports = function(grunt) {
 				compress: {
 					  main: {
 					    options: {
-					      archive: 'ukrgb.zip'
+					      archive: 'joomla/ukrgb.zip'
 					    },
 					    files: [
-					      {src: ['ukrgb/**', '!ukrgb/less/**'],	  dest: '.'}
+					      {src: ['joomla/ukrgb/**', '!joomla/ukrgb/less/**'],	  dest: '.'}
 					    ]
 					  }
 					},
@@ -156,7 +156,7 @@ module.exports = function(grunt) {
 				    },
 				    dist: {
 				        options: {
-				            src: "ukrgb/",
+				            src: "joomla/ukrgb/",
 				            dest: "/http/ukrgb/joomla/templates/ukrgb/", 
 				            //dest: "ukrgb/", 
 				            host: "mrfg@ukrgb-joomla3.homedomain"

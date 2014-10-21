@@ -72,7 +72,7 @@ JHtml::_('behavior.keepalive');
 				</div>
 				<?php else: ?>
 					<label for="modlgn-secretkey"><?php echo JText::_('JGLOBAL_SECRETKEY') ?></label>
-					<input id="modlgn-secretkey" autocomplete="off" type="text" name="secretkey" class="input-small" tabindex="0" size="18" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY') ?>" />
+					<input id="modlgn-secretkey" autocomplete="off" type="text" name="secretkey"  tabindex="0" size="18" placeholder="<?php echo JText::_('JGLOBAL_SECRETKEY') ?>" />
 					<span class="btn width-auto hasTooltip" title="<?php echo JText::_('JGLOBAL_SECRETKEY_HELP'); ?>">
 						<span class="icon-help"></span>
 					</span>
@@ -83,11 +83,9 @@ JHtml::_('behavior.keepalive');
 		<?php endif; ?>
 		<?php if (JPluginHelper::isEnabled('system', 'remember')) : ?>
 		<div id="form-login-remember" class="checkbox">
-
 				<label for="modlgn-remember" >
 					<input id="modlgn-remember" type="checkbox" name="remember" value="yes"/><?php echo JText::_('MOD_LOGIN_REMEMBER_ME') ?>
 				</label> 
-	
 		</div>
 		<?php endif; ?>
 		<div id="form-login-submit" class="form-group">
@@ -95,6 +93,7 @@ JHtml::_('behavior.keepalive');
 				<button type="submit" tabindex="0" name="Submit" class="btn btn-primary"><?php echo JText::_('JLOGIN') ?></button>
 			</div>
 		</div>
+		
 		<?php
 			$usersConfig = JComponentHelper::getParams('com_users'); ?>
 			<ul class="list-unstyled">

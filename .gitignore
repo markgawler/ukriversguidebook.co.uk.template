@@ -2,3 +2,7 @@
 .buildpath
 *~
 
+/composer.phar
+/components/
+/vendor/
+/node_modules/
