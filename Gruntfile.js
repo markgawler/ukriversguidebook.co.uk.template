@@ -161,6 +161,14 @@ module.exports = function(grunt) {
 				            //dest: "ukrgb/", 
 				            host: "mrfg@ukrgb-joomla3.homedomain"
 				        }
+				    },
+				    phpbb: {
+				        options: {
+				            src: "phpbb/prosilver/",
+				            dest: "/http/ukrgb/phpbb/styles/prosilver", 
+				            //dest: "ukrgb/",
+				            host: "mrfg@ukrgb-joomla3.homedomain"
+				        }
 				    }
 				}
 			});

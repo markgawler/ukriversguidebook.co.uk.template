@@ -1,0 +1,22 @@
+
+/* Facebook */
+ #phpbb .facebook-box {
+    float: right;
+}
+
+/* twitter */
+ #phpbb .tweet-box {
+    float: right;
+}
+/* google */
+ #phpbb .google-box {
+    float: right;
+}
+
+/* social */
+ #phpbb .social-buttons {
+    margin-top: 2px;
+ 	margin-right: 5px;
+ 	min-height: 24px;
+ 	margin-bottom: 0px;
+ }
