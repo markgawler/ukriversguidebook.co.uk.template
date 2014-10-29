@@ -9,6 +9,8 @@
 
 defined('_JEXEC') or die;
 
+// Remove the default version of Bootstrap and Jquery. Append new versions in a way 
+// that ensures they are the first scripts in the heade first.
 unset($this->_scripts["/media/jui/js/bootstrap.min.js"]);
 unset($this->_scripts["/media/jui/js/jquery.min.js"]);
 $template_path = 'templates/' .$this->template; 
@@ -16,10 +18,6 @@ $script_array = array('mime' => "text/javascript",'defer' => false,'async' => fa
 $template_js = array(	$template_path . "/js/jquery.min.js" => $script_array,
 						$template_path . "/js/bootstrap.js" => $script_array);
 $this->_scripts = $template_js + $this->_scripts;
-    
-//var_dump($this->_scripts);
-//die();
-//unset($this->_scripts);
 
 //Getting params from template
 //$params = JFactory::getApplication()->getTemplate(true)->params;
@@ -34,11 +32,6 @@ $itemid   = $app->input->getCmd('Itemid', '');
 //$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 
 $doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
-//$doc->addScript('templates/' .$this->template. '/js/jquery.min.js');
-//$doc->addScript('templates/' .$this->template. '/js/jquery-noconflict.js');
-//$doc->addScriptDeclaration('jQuery.noConflict();');
-//$doc->addScript('templates/' .$this->template. '/js/bootstrap.js');
-//$doc->addScript('media/system/js/caption.js');
 
 // Add current user information
 $user = JFactory::getUser();
