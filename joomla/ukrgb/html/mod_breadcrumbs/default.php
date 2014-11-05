@@ -50,7 +50,7 @@ defined('_JEXEC') or die;
 		echo '<li>';
 		if (!empty($item->link))
 		{
-			echo '<a href="' . $item->link . '" class="pathway">' . $item->name . '</a>';
+			echo '<a href="' . $item->link . '">' . $item->name . '</a>';
 		}
 		else
 		{
@@ -59,7 +59,7 @@ defined('_JEXEC') or die;
 
 		if (($key != $penult_item_key) || $show_last)
 		{
-			echo '<span class="divider">' . $separator . '</span>';
+			echo '<span>' . $separator . '</span>';
 		}
 
 		echo '</li>';
