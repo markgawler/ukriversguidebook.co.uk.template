@@ -2,7 +2,33 @@
 @import (reference) "variables.less";
 
 
-@navbar-hover: darken(@navbar-default-bg, 12%);
+
+
+// Page header - used in sidebar (well)
+// -------------------------
+
+.page-header {
+  padding-bottom: ((@line-height-computed / 2) - 1);
+  //margin: (@line-height-computed * 2) 0 @line-height-computed;
+  //padding-bottom: 0;
+  margin: 0 0 0;
+}
+
+.well {
+	font-size: 12px;
+
+	ul  {
+		padding-left: initial;
+	}	
+	h3 {
+		font-size: 20px;
+	}
+}
+
+
+
+// Breadcrumb
+// ----------
 
 .breadcrumb {
 	font-size: 12px;
@@ -19,6 +45,10 @@
 	}
 }
 
+// Nav Bar 
+// -------
+
+@navbar-hover: darken(@navbar-default-bg, 12%);
 
 .navbar {
 	margin-bottom: 10px;
@@ -100,7 +130,8 @@ body {
 	}
 }
 
-
+// Login Form
+// ----------
 form#login-form.form{
 	min-width: 180px;
 	margin-bottom: 10px;

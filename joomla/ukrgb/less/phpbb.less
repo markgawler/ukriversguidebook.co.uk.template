@@ -1,6 +1,7 @@
 #phpbb * {
 	border: none;
 	min-height: initial;
+	font-weight: initial;
 }
 
 #phpbb [class^="icon-"] {
@@ -9,5 +10,9 @@
 
 /* Hide the home icon phpBB has its own*/
 .icon-home:before {
+	content: "";
+}
+/* Hide the bokmark icon phpBB has its own*/
+.icon-bookmark:before {
 	content: "";
 }
