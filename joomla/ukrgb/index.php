@@ -33,6 +33,8 @@ $itemid   = $app->input->getCmd('Itemid', '');
 
 $doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
 
+$doc->addStyleSheet('media/system/css/system.css');
+
 // Add current user information
 $user = JFactory::getUser();
 ?>
@@ -145,13 +147,13 @@ $user = JFactory::getUser();
 		<!-- Content -->
 		<div id="main" class="row">
 
-			<main id="content" class="col-md-9 <?php echo $phpbbLayout?> ">
+			<main id="content" class="col-md-9 ">
 			<div class="pad-main">
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
 			</div>
 			</main>
-			<div id="aside" class="col-md-3 <?php echo $phpbbLayout?> ">
+			<div id="aside" class="col-md-3">
 				<div class="pad-aside">
 					<jdoc:include type="modules" name="aside" style="well" />
 				</div>
