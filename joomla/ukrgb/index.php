@@ -35,6 +35,9 @@ $doc->addStyleSheet('templates/'.$this->template.'/css/template.css');
 
 //$doc->addStyleSheet('media/system/css/system.css');
 
+// Add JavaScript Frameworks
+JHtml::_('bootstrap.framework');
+
 // Add current user information
 $user = JFactory::getUser();
 ?>
@@ -85,52 +88,52 @@ $user = JFactory::getUser();
 		</div>
 
 		<!-- Navigation mainmenu-->
-		<nav class="navbar navbar-default" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		<nav class="navbar" role="navigation">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
 						<span class="sr-only">Toggle navigation</span> 
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">UKRGB</a>
+					<a class="brand" href="#">UKRGB</a>
+		
+	
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
+					<div class="nav-collapse collapse">
+						<jdoc:include type="modules" name="menu" style="none" />
+						
+						<!-- <form class="navbar-form navbar-right" role="search">-->
+						<!-- 	<div class="form-group">-->
+								<!-- <jdoc:include type="modules" name="search" style="none" />-->
+								<!-- <input type="text" class="form-control" placeholder="Search"> -->
+						<!-- 	</div>-->
+						<!-- </form>-->
+						<ul class="nav pull-right">
+								<!-- <li class="navbar-form"><jdoc:include type="modules" name="search" style="none" /></li>-->
+							<!-- The drop down menu -->
+	          				<li class="dropdown">
+	          				<?php if ($user->name) {?>
+	          					
+	          					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $user->name;?><span class="caret"></span></a>
+	          					<ul class="dropdown-menu">						
+	          						<li><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>">Log out</a></li>
+	          					    <li><a href="<?php echo JRoute::_('index.php?option=com_jfusion&view=plugin&Itemid=102&jfile=ucp.php&i=pm&folder=inbox'); ?>">Private Messages</a></li>
+								</ul>
+	          				<?php } else {?> 
+	          				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign In <span class="caret"></span></a>
+	          					<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+	              					<!-- Login form here -->
+									<jdoc:include type="modules" name="login" style="none" />
+								</div>
+							<?php }?>
+							</li>
+						</ul>
+					</div>
+					<!-- /.navbar-collapse -->
 				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<jdoc:include type="modules" name="menu" style="none" />
-					
-					<form class="navbar-form navbar-right" role="search">
-						<div class="form-group">
-							<!-- <jdoc:include type="modules" name="search" style="none" />-->
-							<!-- <input type="text" class="form-control" placeholder="Search"> -->
-						</div>
-					</form>
-					<ul class="nav navbar-nav navbar-right">
-						<li class="navbar-form"><jdoc:include type="modules" name="search" style="none" /></li>
-						<!-- The drop down menu -->
-          				<li class="dropdown">
-          				<?php if ($user->name) {?>
-          					
-          					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $user->name;?><span class="caret"></span></a>
-          					<ul class="dropdown-menu">						
-          						<li><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>">Log out</a></li>
-          					    <li><a href="<?php echo JRoute::_('index.php?option=com_jfusion&view=plugin&Itemid=102&jfile=ucp.php&i=pm&folder=inbox'); ?>">Private Messages</a></li>
-							</ul>
-          				<?php } else {?> 
-          				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign In <span class="caret"></span></a>
-          					<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-              					<!-- Login form here -->
-								<jdoc:include type="modules" name="login" style="none" /> 
-							</div>
-						<?php }?>
-						</li>
-					</ul>
-				</div>
-				<!-- /.navbar-collapse -->
 			</div>
 			<!-- /.container-fluid -->
 		</nav>

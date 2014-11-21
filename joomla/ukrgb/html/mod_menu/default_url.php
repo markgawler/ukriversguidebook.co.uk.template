@@ -37,6 +37,7 @@ if ($item->deeper)
 	if ($item->level == 1)
 	{
 		$caret = ' <span class="caret"></span>';
+		$flink = "#";
 	}
 }
 

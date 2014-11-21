@@ -32,7 +32,7 @@ if ($item->deeper)
 	if ($item->level == 1)
 	{
 		$dt = 'class="dropdown-toggle" data-toggle="dropdown" ';
-		#$link = '#';
+		$link = '#';
 		$caret = ' <span class="caret"></span>';
 	}
 }
@@ -49,7 +49,7 @@ switch ($item->browserNav) {
 		break;
 	case 2:
 	// window.open
-?><a <?php echo $dt.$class; ?>href="<?php echo $ink; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $title; ?>><?php echo $linktype.$caret; ?></a>
+?><a <?php echo $dt.$class; ?>href="<?php echo $link; ?>" onclick="window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes');return false;" <?php echo $title; ?>><?php echo $linktype.$caret; ?></a>
 <?php
 		break;
 }
