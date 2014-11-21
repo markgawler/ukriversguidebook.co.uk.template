@@ -1,152 +1,99 @@
-@import (reference) "mixins.less";
-@import (reference) "variables.less";
+// Variables
+// Core variables and mixins
+@import "variables.less";
+
+// CSS Reset
+@import "../../../../joomla-cms/media/jui/less/reset.less";
+
+// Core variables and mixins
+@import "variables.less"; // Custom for this template
+@import "../../../../joomla-cms/media/jui/less/mixins.less";
+
+// Grid system and page structure
+@import "../../../../joomla-cms/media/jui/less/scaffolding.less";
+@import "../../../../joomla-cms/media/jui/less/grid.less";
+@import "../../../../joomla-cms/media/jui/less/layouts.less";
+
+// Base CSS
+@import "../../../../joomla-cms/media/jui/less/type.less";
+@import "../../../../joomla-cms/media/jui/less/code.less";
+@import "../../../../joomla-cms/media/jui/less/forms.less";
+@import "../../../../joomla-cms/media/jui/less/tables.less";
+
+// Components: common
+// @import "../../../../joomla-cms/media/jui/less/sprites.less";
+@import "../../../../joomla-cms/media/jui/less/dropdowns.less";
+@import "../../../../joomla-cms/media/jui/less/wells.less";
+@import "../../../../joomla-cms/media/jui/less/component-animations.less";
+@import "../../../../joomla-cms/media/jui/less/close.less";
+
+// Components: Buttons & Alerts
+@import "../../../../joomla-cms/media/jui/less/buttons.less";
+@import "../../../../joomla-cms/media/jui/less/button-groups.less";
+@import "../../../../joomla-cms/media/jui/less/alerts.less"; // Note: alerts share common CSS with buttons and thus have styles in buttons.less
+
+// Components: Nav
+@import "../../../../joomla-cms/media/jui/less/navs.less";
+@import "../../../../joomla-cms/media/jui/less/navbar.less";
+@import "../../../../joomla-cms/media/jui/less/breadcrumbs.less";
+@import "../../../../joomla-cms/media/jui/less/pagination.less";
+@import "../../../../joomla-cms/media/jui/less/pager.less";
+
+// Components: Popovers
+@import "../../../../joomla-cms/media/jui/less/modals.less";
+@import "../../../../joomla-cms/media/jui/less/tooltip.less";
+@import "../../../../joomla-cms/media/jui/less/popovers.less";
+
+// Components: Misc
+@import "../../../../joomla-cms/media/jui/less/thumbnails.less";
+@import "../../../../joomla-cms/media/jui/less/labels-badges.less";
+@import "../../../../joomla-cms/media/jui/less/progress-bars.less";
+@import "../../../../joomla-cms/media/jui/less/accordion.less";
+@import "../../../../joomla-cms/media/jui/less/carousel.less";
+@import "../../../../joomla-cms/media/jui/less/hero-unit.less";
+
+// Utility classes
+@import "../../../../joomla-cms/media/jui/less/utilities.less";
+
+// RESPONSIVE CLASSES
+// ------------------
+
+@import "../../../../joomla-cms/media/jui/less/responsive-utilities.less";
+
+
+// MEDIA QUERIES
+// ------------------
+
+// Phones to portrait tablets and narrow desktops
+@import "../../../../joomla-cms/media/jui/less/responsive-767px-max.less";
+
+// Tablets to regular desktops
+@import "../../../../joomla-cms/media/jui/less/responsive-768px-979px.less";
+
+// Large desktops
+@import "../../../../joomla-cms/media/jui/less/responsive-1200px-min.less";
+
+
+// RESPONSIVE NAVBAR
+// ------------------
+
+// From 979px and below, show a button to toggle navbar contents
+@import "../../../../joomla-cms/media/jui/less/responsive-navbar.less";
+
+// Extended for JUI
+@import "../../../../joomla-cms/media/jui/less/bootstrap-extended.less"; // Has to be last to override when necessary
+// div.modal (instead of .modal)
+@import "../../../../joomla-cms/media/jui/less/modals.joomla.less";
+@import "../../../../joomla-cms/media/jui/less/responsive-767px-max.joomla.less";
 
 
 
 
-// Page header - used in sidebar (well)
-// -------------------------
-
-.page-header {
-  padding-bottom: ((@line-height-computed / 2) - 1);
-  //margin: (@line-height-computed * 2) 0 @line-height-computed;
-  //padding-bottom: 0;
-  margin: 0 0 0;
-}
-
-.well {
-	font-size: 12px;
-
-	ul  {
-		padding-left: initial;
-	}	
-	h3 {
-		font-size: 20px;
-	}
-}
-
-.alert {
-	p {
-		margin: 0; // remove line spacing from alerts.
-	}
-}
 
 
-// Breadcrumb
-// ----------
+// UKRGB Customisation
+//@import "custom.less";
+//@import "submenu.less";
+//@import "phpbb.less";
 
-.breadcrumb {
-	font-size: 12px;
-	margin-bottom: 10px;
-	
-	img {
-		padding-left: 2px;
-		vertical-align: initial;
-	} 
-	> li {
-		+ li:before {
-			padding: 0px 0px;
-		}
-	}
-}
-
-// Nav Bar 
-// -------
-
-@navbar-hover: darken(@navbar-default-bg, 12%);
-
-.navbar {
-	margin-bottom: 10px;
-}
-
-.navbar-default {
-	.navbar-nav {
-		> .active > a {
-			
-			&:hover,
-	        &:focus {
-				background-color: @navbar-hover;
-				}
-			}
-		> li > a {
-			
-			&:hover,
-	        &:focus {
-				background-color: @navbar-hover;
-				}
-			}
-		}
-	}
-.nav-header {
-	p {
-		font-weight: bold;
-		color: @gray-light;
-		padding: 3px 10px;
-		margin: 0;
-	}
-}
-
-
-.banner {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.logo {
-	background-color: #000000;
-	img {
-		margin-left:   -15px;
-	}
-	h1 {
-		margin-right: 10px;
-		margin-top: 5px;
-		margin-bottom: 5px;
-		color: @gray-lighter;
-		text-align: right;
-		font-size: 2.5em;
-	}	
-}
-
-.bg{
-	background-color: #fff;
-}
-
-body {
-	#gradient > .vertical(@brand-primary, #fff);
-	
-	@media (min-width: @container-lg) {
-		margin-left: 30px;
-		margin-right: 30px;
-	}
-}
-
-
-.footer {
-	#gradient > .vertical(@blue-lighter,@blue-darker);
-	padding-top: 15px;
-	padding-bottom: 15px;
-	padding-left: 20px;
-	margin-left:   -15px;
-	margin-right: -15px;
-	
-	p {
-		margin-right: 30px;
-		color: @gray-lighter;
-	}	
-	
-	a {
-		color: @gray-lighter;
-		text-decoration: none;
-	}
-	a:hover {
-		color: #fff;
-	}
-}
-
-// Login Form
-// ----------
-form#login-form.form{
-	min-width: 180px;
-	margin-bottom: 10px;
-}
 

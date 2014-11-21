@@ -11,13 +11,13 @@ defined('_JEXEC') or die;
 
 // Remove the default version of Bootstrap and Jquery. Append new versions in a way 
 // that ensures they are the first scripts in the heade first.
-unset($this->_scripts["/media/jui/js/bootstrap.min.js"]);
-unset($this->_scripts["/media/jui/js/jquery.min.js"]);
-$template_path = 'templates/' .$this->template; 
-$script_array = array('mime' => "text/javascript",'defer' => false,'async' => false);
-$template_js = array(	$template_path . "/js/jquery.min.js" => $script_array,
-						$template_path . "/js/bootstrap.js" => $script_array);
-$this->_scripts = $template_js + $this->_scripts;
+//unset($this->_scripts["/media/jui/js/bootstrap.min.js"]);
+//unset($this->_scripts["/media/jui/js/jquery.min.js"]);
+//$template_path = 'templates/' .$this->template; 
+//$script_array = array('mime' => "text/javascript",'defer' => false,'async' => false);
+//$template_js = array(	$template_path . "/js/jquery.min.js" => $script_array,
+//						$template_path . "/js/bootstrap.js" => $script_array);
+//$this->_scripts = $template_js + $this->_scripts;
 
 //Getting params from template
 //$params = JFactory::getApplication()->getTemplate(true)->params;
@@ -31,9 +31,9 @@ $sitename = $app->getCfg('sitename');
 $itemid   = $app->input->getCmd('Itemid', '');
 //$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 
-$doc->addStyleSheet('templates/'.$this->template.'/css/bootstrap.css');
+$doc->addStyleSheet('templates/'.$this->template.'/css/template.css');
 
-$doc->addStyleSheet('media/system/css/system.css');
+//$doc->addStyleSheet('media/system/css/system.css');
 
 // Add current user information
 $user = JFactory::getUser();
@@ -58,12 +58,12 @@ $user = JFactory::getUser();
 		<!-- Headder -->
 		<div id="wrapper-header">
 			<div id="header" class="row logo">
-				<div id="logo" class="col-md-6">
+				<div id="logo" class="span6">
 					<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
 					<img class="img-responsive" src="templates/<?php echo $this->template;?>/images/banner.jpg">
 					<!--  <jdoc:include type="modules" name="logo" style="xhtml" />	-->
 				</div>
-				<div class="col-md-6">
+				<div class="span6">
 					<h1>UKRGB</h1>
 					<h1>The UK Rivers Guidebook</h1>
 				</div>
@@ -72,11 +72,11 @@ $user = JFactory::getUser();
 			<!-- row headder-->
 
 			<div id="banner" class="row banner">
-				<div id="banner-left" class="col-md-6">
+				<div id="banner-left" class="span6">
 					<!-- <jdoc:include type="modules" name="banner-left" style="none" -->
 					<img class="img-responsive" src="http://placehold.it/570x80">
 				</div>
-				<div id="banner-right" class="col-md-6">
+				<div id="banner-right" class="span6">
 					<!--<jdoc:include type="modules" name="banner-right" style="none" -->
 					<img class="img-responsive" src="http://placehold.it/570x80">
 				</div>
