@@ -9,16 +9,6 @@
 
 defined('_JEXEC') or die;
 
-// Remove the default version of Bootstrap and Jquery. Append new versions in a way 
-// that ensures they are the first scripts in the heade first.
-//unset($this->_scripts["/media/jui/js/bootstrap.min.js"]);
-//unset($this->_scripts["/media/jui/js/jquery.min.js"]);
-//$template_path = 'templates/' .$this->template; 
-//$script_array = array('mime' => "text/javascript",'defer' => false,'async' => false);
-//$template_js = array(	$template_path . "/js/jquery.min.js" => $script_array,
-//						$template_path . "/js/bootstrap.js" => $script_array);
-//$this->_scripts = $template_js + $this->_scripts;
-
 //Getting params from template
 //$params = JFactory::getApplication()->getTemplate(true)->params;
 
@@ -40,30 +30,29 @@ JHtml::_('bootstrap.framework');
 
 // Add current user information
 $user = JFactory::getUser();
+
+$fluid = '-fluid';
+//$fluid = '';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<jdoc:include type="head" /> 
+<jdoc:include type="head" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
-	<div id="wrapper" class="container-fluid bg">
+	<div id="wrapper" class="container<?php echo ($fluid); ?> bg">
 		<!-- Headder -->
-		<div id="wrapper-header">
-			<div id="header" class="row logo">
-				<div id="logo" class="span6">
+		<div id="wrapper-header ">
+			<div id="header" class="row<?php echo ($fluid); ?> logo">
+				<div class="span6">
 					<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
-					<img class="img-responsive" src="templates/<?php echo $this->template;?>/images/banner.jpg">
+					<img class="img-responsive"
+						src="templates/<?php echo $this->template;?>/images/banner.jpg">
 					<!--  <jdoc:include type="modules" name="logo" style="xhtml" />	-->
 				</div>
 				<div class="span6">
@@ -72,20 +61,16 @@ $user = JFactory::getUser();
 				</div>
 				<!-- end logo -->
 			</div>
-			<!-- row headder-->
-
-			<div id="banner" class="row banner">
-				<div id="banner-left" class="span6">
-					<!-- <jdoc:include type="modules" name="banner-left" style="none" -->
-					<img class="img-responsive" src="http://placehold.it/570x80">
-				</div>
-				<div id="banner-right" class="span6">
-					<!--<jdoc:include type="modules" name="banner-right" style="none" -->
-					<img class="img-responsive" src="http://placehold.it/570x80">
-				</div>
-			</div>
-			<!-- banner -->
 		</div>
+		<div id="banner" class="row<?php echo ($fluid); ?> banner">
+			<div id="banner-left" class="span6">
+				<img class="img-responsive" src="http://placehold.it/570x80">
+			</div>
+			<div id="banner-right" class="span6">
+				<img class="img-responsive" src="http://placehold.it/570x80">
+			</div>
+		</div>	
+		
 
 		<!-- Navigation mainmenu-->
 		<nav class="navbar" role="navigation">
@@ -139,45 +124,47 @@ $user = JFactory::getUser();
 		</nav>
 
 		<!--  breadcrumb -->
-		<div id="breadcrumb" class="row">
-			<div id="breadcrumb-wrapper" class="col-md-12">
+		<div id="breadcrumb" class="row<?php echo ($fluid); ?>">
+			<div id="breadcrumb-wrapper" class="span12">
 				<jdoc:include type="modules" name="breadcrumb" style="none" />
 			</div>
 			<!-- end breadcrumb-wrapper -->
 		</div>
-		<!-- row breadcrumb-->
+		
+
 
 		<!-- Content -->
-		<div id="main" class="row">
 
-			<main id="content" class="col-md-9 ">
+		<div class="row<?php echo ($fluid); ?>">
+
+			<main id="content" class="span9 ">
 			<div class="pad-main">
-				<jdoc:include type="message" />
+				<!-- 					<jdoc:include type="message" /> -->
 				<jdoc:include type="component" />
 			</div>
 			</main>
-			<div id="aside" class="col-md-3">
-				<div class="pad-aside">
-					<jdoc:include type="modules" name="aside" style="well" />
-				</div>
+			<div id="aside" class="span3">
+				<!--				<div class="pad-aside">-->
+				<jdoc:include type="modules" name="aside" style="well" />
+				<!--				</div>-->
 			</div>
+
 
 		</div>
 		<!-- main -->
-
-		<!-- Footer -->
-		<footer class="footer" role="contentinfo">
-			<div class="container-fluid">
-				<!-- <hr /> -->
-				<jdoc:include type="modules" name="footer" style="none" />
-				<p class="pull-right">
-					<a href="#top" id="back-top"><?php echo JText::_('TPL_UKRGB_BACKTOTOP'); ?></a>
-				</p>
-				<p>&copy; <?php echo $sitename; ?> <?php echo date('Y');?></p>
-			</div>
-		</footer>
-		<jdoc:include type="modules" name="debug" style="none" />
 	</div>
-	<!-- wrapper -->
+	<!-- Footer -->
+	<footer class="footer" role="contentinfo">
+		<div class="container<?php echo ($fluid); ?>">
+			<!-- <hr /> -->
+			<jdoc:include type="modules" name="footer" style="none" />
+			<p class="pull-right">
+				<a href="#top" id="back-top"><?php echo JText::_('TPL_UKRGB_BACKTOTOP'); ?></a>
+			</p>
+			<p>&copy; <?php echo $sitename; ?> <?php echo date('Y');?></p>
+		</div>
+	</footer>
+	<jdoc:include type="modules" name="debug" style="none" />
+
 </body>
 </html>
