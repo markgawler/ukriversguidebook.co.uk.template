@@ -6,33 +6,32 @@
 * @copyright   Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
 * @license     GNU General Public License version 2 or later; see LICENSE.txt
 */
+defined ( '_JEXEC' ) or die ();
 
-defined('_JEXEC') or die;
+// Getting params from template
+// $params = JFactory::getApplication()->getTemplate(true)->params;
 
-//Getting params from template
-//$params = JFactory::getApplication()->getTemplate(true)->params;
-
-$app = JFactory::getApplication();
-$doc = JFactory::getDocument();
+$app = JFactory::getApplication ();
+$doc = JFactory::getDocument ();
 $this->language = $doc->language;
-$sitename = $app->getCfg('sitename');
+$sitename = $app->getCfg ( 'sitename' );
 
 // Check for forum
-$itemid   = $app->input->getCmd('Itemid', '');
-//$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
+$itemid = $app->input->getCmd ( 'Itemid', '' );
+// $phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 
-$doc->addStyleSheet('templates/'.$this->template.'/css/template.css');
+$doc->addStyleSheet ( 'templates/' . $this->template . '/css/template.css' );
 
-//$doc->addStyleSheet('media/system/css/system.css');
+// $doc->addStyleSheet('media/system/css/system.css');
 
 // Add JavaScript Frameworks
-JHtml::_('bootstrap.framework');
+JHtml::_ ( 'bootstrap.framework' );
 
 // Add current user information
-$user = JFactory::getUser();
+$user = JFactory::getUser ();
 
 $fluid = '-fluid';
-//$fluid = '';
+// $fluid = '';
 
 ?>
 
@@ -45,22 +44,20 @@ $fluid = '-fluid';
 </head>
 
 <body>
-	<div id="wrapper" class="container<?php echo ($fluid); ?> bg">
-		<!-- Headder -->
-		<div id="wrapper-header ">
-			<div id="header" class="row<?php echo ($fluid); ?> logo">
-				<div class="span6">
-					<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
-					<img class="img-responsive"
-						src="templates/<?php echo $this->template;?>/images/banner.jpg">
-					<!--  <jdoc:include type="modules" name="logo" style="xhtml" />	-->
-				</div>
-				<div class="span6">
-					<h1>UKRGB</h1>
-					<h1>The UK Rivers Guidebook</h1>
-				</div>
-				<!-- end logo -->
+	<!-- Headder -->
+	<div id="wrap-headder" class="container<?php echo ($fluid); ?> bg">
+		<div id="header" class="row<?php echo ($fluid); ?> logo">
+			<div class="span6">
+				<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
+				<img class="img-responsive"
+					src="templates/<?php echo $this->template;?>/images/banner.jpg">
+				<!--  <jdoc:include type="modules" name="logo" style="xhtml" />	-->
 			</div>
+			<div class="span6">
+				<h1>UKRGB</h1>
+				<h1>The UK Rivers Guidebook</h1>
+			</div>
+			<!-- end logo -->
 		</div>
 		<div id="banner" class="row<?php echo ($fluid); ?> banner">
 			<div id="banner-left" class="span6">
@@ -69,58 +66,65 @@ $fluid = '-fluid';
 			<div id="banner-right" class="span6">
 				<img class="img-responsive" src="http://placehold.it/570x80">
 			</div>
-		</div>	
-		
+		</div>
+	</div>
 
+	<!-- Body -->
+	<div id="wrap-body" class="container<?php echo ($fluid); ?> bg wrap-body">
 		<!-- Navigation mainmenu-->
-		<nav class="navbar" role="navigation">
+		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="navbar-inner">
 				<div class="container-fluid">
-					<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-						<span class="sr-only">Toggle navigation</span> 
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span> 
-						<span class="icon-bar"></span>
+					<button type="button" class="btn btn-navbar" data-toggle="collapse"
+						data-target=".nav-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
 					</button>
 					<a class="brand" href="#">UKRGB</a>
-		
-	
+
+
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
 					<div class="nav-collapse collapse">
 						<jdoc:include type="modules" name="menu" style="none" />
-						
+
 						<!-- <form class="navbar-form navbar-right" role="search">-->
 						<!-- 	<div class="form-group">-->
-								<!-- <jdoc:include type="modules" name="search" style="none" />-->
-								<!-- <input type="text" class="form-control" placeholder="Search"> -->
+						<!-- <jdoc:include type="modules" name="search" style="none" />-->
+						<!-- <input type="text" class="form-control" placeholder="Search"> -->
 						<!-- 	</div>-->
 						<!-- </form>-->
 						<ul class="nav pull-right">
-								<!-- <li class="navbar-form"><jdoc:include type="modules" name="search" style="none" /></li>-->
+							<!-- <li class="navbar-form"><jdoc:include type="modules" name="search" style="none" /></li>-->
 							<!-- The drop down menu -->
-	          				<li class="dropdown">
+							<li class="dropdown">
 	          				<?php if ($user->name) {?>
 	          					
-	          					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $user->name;?><span class="caret"></span></a>
-	          					<ul class="dropdown-menu">						
-	          						<li><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>">Log out</a></li>
-	          					    <li><a href="<?php echo JRoute::_('index.php?option=com_jfusion&view=plugin&Itemid=102&jfile=ucp.php&i=pm&folder=inbox'); ?>">Private Messages</a></li>
+	          					<a class="dropdown-toggle" data-toggle="dropdown"
+								href="#"><?php echo $user->name;?><span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a
+										href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>">Log
+											out</a></li>
+									<li><a
+										href="<?php echo JRoute::_('index.php?option=com_jfusion&view=plugin&Itemid=102&jfile=ucp.php&i=pm&folder=inbox'); ?>">Private
+											Messages</a></li>
 								</ul>
 	          				<?php } else {?> 
-	          				    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Sign In <span class="caret"></span></a>
-	          					<div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
-	              					<!-- Login form here -->
+	          				    <a class="dropdown-toggle" data-toggle="dropdown"
+								href="#">Sign In <span class="caret"></span></a>
+								<div class="dropdown-menu"
+									style="padding: 15px; padding-bottom: 0px;">
+									<!-- Login form here -->
 									<jdoc:include type="modules" name="login" style="none" />
 								</div>
 							<?php }?>
 							</li>
 						</ul>
 					</div>
-					<!-- /.navbar-collapse -->
 				</div>
 			</div>
-			<!-- /.container-fluid -->
 		</nav>
 
 		<!--  breadcrumb -->
@@ -130,8 +134,6 @@ $fluid = '-fluid';
 			</div>
 			<!-- end breadcrumb-wrapper -->
 		</div>
-		
-
 
 		<!-- Content -->
 
@@ -139,7 +141,7 @@ $fluid = '-fluid';
 
 			<main id="content" class="span9 ">
 			<div class="pad-main">
-				<!-- 					<jdoc:include type="message" /> -->
+				<jdoc:include type="message" />
 				<jdoc:include type="component" />
 			</div>
 			</main>
@@ -152,19 +154,19 @@ $fluid = '-fluid';
 
 		</div>
 		<!-- main -->
-	</div>
-	<!-- Footer -->
-	<footer class="footer" role="contentinfo">
-		<div class="container<?php echo ($fluid); ?>">
-			<!-- <hr /> -->
-			<jdoc:include type="modules" name="footer" style="none" />
-			<p class="pull-right">
-				<a href="#top" id="back-top"><?php echo JText::_('TPL_UKRGB_BACKTOTOP'); ?></a>
-			</p>
-			<p>&copy; <?php echo $sitename; ?> <?php echo date('Y');?></p>
-		</div>
-	</footer>
-	<jdoc:include type="modules" name="debug" style="none" />
+
+		<!-- Footer -->
+		<footer class="footer" role="contentinfo">
+			<div class="container<?php echo ($fluid); ?>">
+				<!-- <hr /> -->
+				<jdoc:include type="modules" name="footer" style="none" />
+				<p class="pull-right">
+					<a href="#top" id="back-top"><?php echo JText::_('TPL_UKRGB_BACKTOTOP'); ?></a>
+				</p>
+				<p>&copy; <?php echo $sitename; ?> <?php echo date('Y');?></p>
+			</div>
+		</footer>
+		<jdoc:include type="modules" name="debug" style="none" />
 
 </body>
 </html>

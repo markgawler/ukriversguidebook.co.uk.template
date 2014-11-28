@@ -1,0 +1,23 @@
+@import (reference) "variables.less";
+
+.navbar {
+	margin-bottom: 10px;
+}
+
+.navbar-inverse {
+	.navbar-nav {
+		> .active > a {
+			&:hover,
+	        &:focus {
+				background-color: @navbarInverseLinkBackgroundHover;
+				}
+			}
+//		> li > a {
+//			
+//			&:hover,
+//	        &:focus {
+//				background-color: @navbar-hover;
+//				}
+//			}
+		}
+	}
