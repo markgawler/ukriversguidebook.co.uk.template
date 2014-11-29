@@ -70,8 +70,7 @@ defined('_JEXEC') or die;
  */
 function pagination_list_footer($list)
 {
-	//$html = "<div class=\"pagination\">\n";
-	$html = "<div>\n";
+	$html = "<div class=\"pagination\">\n";
 	$html .= $list['pageslinks'];
 	$html .= "\n<input type=\"hidden\" name=\"" . $list['prefix'] . "limitstart\" value=\"" . $list['limitstart'] . "\" />";
 	$html .= "\n</div>";
@@ -113,7 +112,7 @@ function pagination_list_render($list)
 		}
 	}
 
-	$html = '<ul class="pagination">';
+	$html = '<ul class="pagination-list">';
 	$html .= $list['start']['data'];
 	$html .= $list['previous']['data'];
 
@@ -228,5 +227,3 @@ function pagination_item_inactive(&$item)
 	// Doesn't match any other condition, render a normal item
 	return '<li class="disabled hidden-phone"><a>' . $item->text . '</a></li>';
 }
-
-

@@ -1,10 +1,11 @@
-// Breadcrumb
-// ----------
+// Breadcrumbs
+// -----------
 @import (reference) "variables.less";
+@import (reference) "../../../../joomla-cms/media/jui/less/mixins.less";
 
 
-.breadcrumb {
-	background-color: @breadcrumb-bg;
+//.breadcrumb {
+//	background-color: @breadcrumb-bg;
 //	font-size: 12px;
 //	margin-bottom: 10px;
 	
@@ -17,4 +18,31 @@
 //			padding: 0px 0px;
 //		}
 //	}
+//}
+
+
+.breadcrumb {
+  font-size: 12px;
+  padding: 5px 15px;
+  margin: 0 0 @baseLineHeight;
+  list-style: none;
+  background-color: @breadcrumb-bg;
+  .border-radius(@baseBorderRadius);
+  > li {
+    display: inline-block;
+    .ie7-inline-block();
+    //text-shadow: 0 1px 0 @white;
+    > .divider {
+      padding: 0 5px;
+      color: #ccc;
+    }
+  }
+  > .active {
+    color: @grayDark;
+  }
+  
+  img {
+	padding: 0 1px;
+	vertical-align: initial;
+  } 
 }
