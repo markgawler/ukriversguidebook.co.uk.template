@@ -12,8 +12,56 @@ module.exports = function(grunt) {
 		//	dest: 'build/<%= pkg.name %>.min.js'
 		//},
 		// Task configuration.
+		
+		concat : {
+			options : {
+				banner : '<%= banner %>\n<%= jqueryCheck %>',
+				stripBanners : false
+			},
+			ukrgb : {
+				src : [ 'airbox/js/airbox.js',
+						'slimbox2/src/slimbox2.js',
+						'slimbox2/src/autoload.js'],
+				dest : 'js/<%= pkg.name %>.js'
+			}
+		},
+
+		uglify : {
+			options : {
+				preserveComments : 'some'
+
+			},
+			ukrgb : {
+				src : '<%= concat.ukrgb.dest %>',
+				dest : 'js/<%= pkg.name %>.min.js'
+			}
+		},
+
+		copy : {
+			slimboxImages : {
+				expand : true,
+				src : 'slimbox2/css/*.gif',
+				dest : 'css/',
+				flatten : true
+			},
+			slimboxcss : {
+				expand : true,
+				src : 'slimbox2/css/slimbox2.css',
+				dest : 'less/',
+				flatten : true
+			}
+		},
+		rename: {
+			renameToLess: {
+				src: 'less/slimbox2.css',
+				dest: 'less/slimbox2.less'
+			}
+		},
+		
+		
+		
 		clean : {
-			dist : ['css/template*.css','css/template*.map', 'ukrgb.zip']
+			dist : ['css/template*.css','css/template*.map', 'ukrgb.zip','js/template*.js','css/*.gif','less/slimbox2.less']
 			},
 		less : {
 			compileCore : {
@@ -77,7 +125,7 @@ module.exports = function(grunt) {
 					archive: 'ukrgb.zip'
 				},
 				files: [
-				        {src: ['**', '!less/**', '!node_modules/**','!*.zip'],	  dest: '.'}
+				        {src: ['**', '!less/**', '!node_modules/**','!*.zip','!airbox/**','!slimbox2/**'],	  dest: '.'}
 				        ]
 			}
 		},
@@ -118,10 +166,15 @@ module.exports = function(grunt) {
 	
 	// CSS distribution task.
 	grunt.registerTask('less-compile', [ 'less:compileCore' ]);
-	grunt.registerTask('dist-css', [ 'less-compile', 'autoprefixer', 'csscomb', 'cssmin' ]);
+	grunt.registerTask('copy-sb', [ 'copy:slimboxImages','copy:slimboxcss','rename']);
+
+	grunt.registerTask('dist-css', [ 'copy-sb','less-compile', 'autoprefixer', 'csscomb', 'cssmin' ]);
+	
+	grunt.registerTask('dist-js', [ 'concat','uglify' ]);
+
 
 	// Default task(s).
-	grunt.registerTask('dist', ['clean','dist-css','compress']);
+	grunt.registerTask('dist', ['clean','dist-css','dist-js','compress']);
 	grunt.registerTask('default', ['clean','dist-css','rsync']);
 
 };

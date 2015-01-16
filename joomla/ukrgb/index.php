@@ -20,12 +20,12 @@ $sitename = $app->getCfg ( 'sitename' );
 $itemid = $app->input->getCmd ( 'Itemid', '' );
 // $phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 
-$doc->addStyleSheet ( 'templates/' . $this->template . '/css/template.css' );
-
-// $doc->addStyleSheet('media/system/css/system.css');
+$doc->addStyleSheet ( 'templates/' . $this->template . '/css/template.min.css' );
 
 // Add JavaScript Frameworks
 JHtml::_ ( 'bootstrap.framework' );
+
+$doc->addScript ( 'templates/' . $this->template . '/js/template.min.js' );
 
 // Add current user information
 $user = JFactory::getUser ();
