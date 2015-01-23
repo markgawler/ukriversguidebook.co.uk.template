@@ -42,12 +42,30 @@ if (!empty($this->items))
 	<?php endif; ?>
 
 <?php else : ?>
-<?php $tag_set = RiverguideHelper::get_tagset_for_category($this->category->id);
-	var_dump($tag_set);
-	if (!empty($tag_set))
+<?php $grades = RiverguideHelper::get_tagset_for_category($this->category->id);
+	$river_guide = !empty($grades);
+	
+	if ($river_guide)
 	{
-		echo ("<h1>RiverGuide</h1>");
+		
+		//echo ("<h1>River Guide</h1>");
+		
+		foreach ($this->items as $i => $article){
+			foreach ($article->tags->itemTags as $t){
+				if (in_array($t->tag_id,$grades)) {
+					$river[$i] = $t->tag_id;
+					$grade[$t->tag_id] = TRUE;
+					break;
+				}
+			}
+			if (empty($river[$i]))
+			{
+				$grade['uncl'] = TRUE;
+				$river[$i] = 'uncl';
+			}
+		}
 	}
+	$grades[] = "uncl";
 	
 ?>
 <form action="<?php echo htmlspecialchars(JUri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
@@ -77,9 +95,12 @@ if (!empty($this->items))
 	</fieldset>
 	<?php endif; ?>
 
-	<?php for ($xyz = 1; $xyz <= 2; $xyz++) {?>
-	<h1>Hello!!</h1>
-
+	<?php foreach ($grades as $index => $tag_id) :?>
+	<?php if ($river_guide && array_key_exists($tag_id, $grade)) : ?>
+		<h3>
+		<?php echo JText::_('COM_UKRGB_RGDIFF_L'.$index); ?>
+		</h3>
+		
 	<table class="category table table-striped table-bordered table-hover">
 		<?php if ($this->params->get('show_headings')) : ?>
 		<thead>
@@ -117,15 +138,7 @@ if (!empty($this->items))
 		<tbody>
 			<?php foreach ($this->items as $i => $article) : ?>
 				<?php 
-				$tags = $article->tags->itemTags;
-				if (!empty($tags)){
-					
-					echo "Has Tags";
-					//var_dump($tags);
-					echo "<br>";
-				}
-				
-				?>
+				if ($river[$i] == $tag_id || !$river_guide) : ?>
 				<?php if ($this->items[$i]->state == 0) : ?>
 				 <tr class="system-unpublished cat-list-row<?php echo $i % 2; ?>">
 				<?php else: ?>
@@ -204,10 +217,13 @@ if (!empty($this->items))
 						</td>
 					<?php endif; ?>
 				</tr>
+			<?php  endif; ?>	
 			<?php endforeach; ?>
 		</tbody>
 	</table>
-	<?php }?>
+	<?php endif; ?>
+	
+<?php endforeach; ?>
 <?php endif; ?>
 
 <?php // Code to add a link to submit an article. ?>
