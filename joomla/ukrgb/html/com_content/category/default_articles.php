@@ -46,10 +46,7 @@ if (!empty($this->items))
 	$river_guide = !empty($grades);
 	
 	if ($river_guide)
-	{
-		
-		//echo ("<h1>River Guide</h1>");
-		
+	{		
 		foreach ($this->items as $i => $article){
 			foreach ($article->tags->itemTags as $t){
 				if (in_array($t->tag_id,$grades)) {
