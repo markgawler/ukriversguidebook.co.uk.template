@@ -93,11 +93,12 @@ if (!empty($this->items))
 	<?php endif; ?>
 
 	<?php foreach ($grades as $index => $tag_id) :?>
-	<?php if ($river_guide && array_key_exists($tag_id, $grade)) : ?>
-		<h3>
-		<?php echo JText::_('COM_UKRGB_RGDIFF_L'.$index); ?>
-		</h3>
-		
+	<?php if (array_key_exists($tag_id, $grade) || empty($grade)) : ?>
+		<?php if ($river_guide) : ?>
+			<h3>
+			<?php echo JText::_('COM_UKRGB_RGDIFF_L'.$index); ?>
+			</h3>
+		<?php endif;?>
 	<table class="category table table-striped table-bordered table-hover">
 		<?php if ($this->params->get('show_headings')) : ?>
 		<thead>
