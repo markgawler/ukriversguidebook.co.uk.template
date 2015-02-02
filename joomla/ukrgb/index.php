@@ -18,7 +18,8 @@ $sitename = $app->getCfg ( 'sitename' );
 
 // Check for forum
 $itemid = $app->input->getCmd ( 'Itemid', '' );
-// $phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
+#$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
+$phpbbPage = ($itemid == $this->params->get('forumItemId'));
 
 $doc->addStyleSheet ( 'templates/' . $this->template . '/css/template.min.css' );
 
@@ -32,6 +33,34 @@ $user = JFactory::getUser ();
 
 $fluid = '-fluid';
 // $fluid = '';
+$content_span="span9";
+$desktop = True;
+if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
+{
+	$dev_type ="Desktop";
+	$desktop = True;
+	
+}
+else if ($_SERVER['HTTP_CLOUDFRONT_IS_TABLET_VIEWER']=='true')
+{
+	$dev_type ="Tablet";
+	$desktop = False;
+	
+}
+else if ($_SERVER['HTTP_CLOUDFRONT_IS_MOBILE_VIEWER']=='true')
+{
+	$dev_type ="Mobile";
+	$desktop = False;
+}
+else
+{ 
+	$desktop = False;
+	$dev_type ="Other";
+}
+
+if ($phpbbPage && !$desktop){
+	$content_span="span12";
+}
 
 ?>
 
@@ -44,8 +73,10 @@ $fluid = '-fluid';
 </head>
 
 <body>
-	<!-- Headder -->
+
+<!-- Headder -->
 	<div id="wrap-headder" class="container<?php echo ($fluid); ?> bg">
+	<?php echo $dev_type. ",  phpPage:" . $phpbbPage . ", contentspan:" . $content_span;?>
 		<div id="header" class="row<?php echo ($fluid); ?> logo">
 			<div class="span6">
 				<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
@@ -77,9 +108,10 @@ $fluid = '-fluid';
 				<div class="container-fluid">
 					<button type="button" class="btn btn-navbar" data-toggle="collapse"
 						data-target=".nav-collapse">
-						<span class="sr-only">Toggle navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
+						<span class="hidden">Toggle navigation</span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span> 
+						<span class="icon-bar"></span>
 					</button>
 					<a class="brand" href="#">UKRGB</a>
 
@@ -104,12 +136,8 @@ $fluid = '-fluid';
 	          					<a class="dropdown-toggle" data-toggle="dropdown"
 								href="#"><?php echo $user->name;?><span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a
-										href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>">Log
-											out</a></li>
-									<li><a
-										href="<?php echo JRoute::_('index.php?option=com_jfusion&view=plugin&Itemid=102&jfile=ucp.php&i=pm&folder=inbox'); ?>">Private
-											Messages</a></li>
+									<li><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>">Log out</a></li>
+									<li><a href="<?php echo JRoute::_('index.php?option=com_jfusion&view=plugin&Itemid=102&jfile=ucp.php&i=pm&folder=inbox'); ?>">Private Messages</a></li>
 								</ul>
 	          				<?php } else {?> 
 	          				    <a class="dropdown-toggle" data-toggle="dropdown"
@@ -139,34 +167,35 @@ $fluid = '-fluid';
 
 		<div class="row<?php echo ($fluid); ?>">
 
-			<main id="content" class="span9 ">
+			<main id="content" class=<?php echo $content_span; ?>>
 			<div class="pad-main">
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
 			</div>
 			</main>
-			<div id="aside" class="span3">
-				<!--				<div class="pad-aside">-->
-				<jdoc:include type="modules" name="aside" style="well" />
-				<!--				</div>-->
-			</div>
+			<?php if ($desktop || !$phpbbPage) : ?>
+				<div id="aside" class="span3">
+					<jdoc:include type="modules" name="aside" style="well" />
+				</div>
+			<?php endif;?>
 
 
 		</div>
 		<!-- main -->
 
-		<!-- Footer -->
-		<footer class="footer" role="contentinfo">
-			<div class="container<?php echo ($fluid); ?>">
-				<!-- <hr /> -->
-				<jdoc:include type="modules" name="footer" style="none" />
-				<p class="pull-right">
-					<a href="#top" id="back-top"><?php echo JText::_('TPL_UKRGB_BACKTOTOP'); ?></a>
-				</p>
-				<p>&copy; <?php echo $sitename; ?> <?php echo date('Y');?></p>
-			</div>
-		</footer>
-		<jdoc:include type="modules" name="debug" style="none" />
+	</div>
+	<!-- Footer -->
+	<footer class="footer" role="contentinfo">
+		<div class="container<?php echo ($fluid); ?>">
+			<!-- <hr /> -->
+			<jdoc:include type="modules" name="footer" style="none" />
+			<p class="pull-right">
+				<a href="#top" id="back-top"><?php echo JText::_('TPL_UKRGB_BACKTOTOP'); ?></a>
+			</p>
+			<p>&copy; <?php echo $sitename; ?> <?php echo date('Y');?></p>
+		</div>
+	</footer>
+	<jdoc:include type="modules" name="debug" style="none" />
 
 </body>
 </html>
