@@ -8,9 +8,6 @@
 */
 defined ( '_JEXEC' ) or die ();
 
-// Getting params from template
-// $params = JFactory::getApplication()->getTemplate(true)->params;
-
 $app = JFactory::getApplication ();
 $doc = JFactory::getDocument ();
 $this->language = $doc->language;
@@ -60,13 +57,15 @@ else
 if ($phpbbPage && !$desktop){
 	$asside = False;
 	$phpbbLayout = 'phpbb-layout';
-	$style = '#phpbb #wrap {min-width: 580px!important;} #phpbb dd.lastpost {width: 24%!important;;}';
+	$style = '#phpbb #wrap {min-width: 580px!important;} #phpbb dd.lastpost {width: 24%!important;}';
 	$doc->addStyleDeclaration( $style );
 }else{
 	$asside = True;
 	$phpbbLayout = '';
 }
-
+if ($this->countModules( 'aside' ) == 0){
+	$asside = False;
+}
 
 ?>
 
@@ -82,7 +81,6 @@ if ($phpbbPage && !$desktop){
 
 <!-- Headder -->
 	<div id="wrap-headder" class="container<?php echo ($fluid);?> <?php echo($phpbbLayout); ?> bg">
-	<?php echo $dev_type;?>
 		<div id="header" class="row<?php echo ($fluid); ?> logo">
 			<div class="span6">
 				<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
