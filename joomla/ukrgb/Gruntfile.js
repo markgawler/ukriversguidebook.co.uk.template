@@ -140,17 +140,8 @@ module.exports = function(grunt) {
 				options: {
 					src: ".",
 					dest: "/http/ukrgb/joomla/templates/ukrgb/", 
-					//dest: "ukrgb/", 
 					host: "ukrgb-joomla3.homedomain"
 				}
-			//},
-			//phpbb: {
-			//	options: {
-			//		src: "phpbb/prosilver/",
-			//		dest: "/http/ukrgb/phpbb/styles/prosilver", 
-			//		//dest: "ukrgb/",
-			//		host: "mrfg@ukrgb-joomla3.homedomain"
-			//	}
 			}
 		}
 	});

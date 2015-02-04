@@ -13,12 +13,12 @@
 				background-color: @navbarInverseLinkBackgroundHover;
 				}
 			}
-//		> li > a {
-//			
-//			&:hover,
-//	        &:focus {
-//				background-color: @navbar-hover;
-//				}
-//			}
 		}
 	}
+	
+// remove second level menu from collapsed navbar.
+@media (max-width: @navbarCollapseWidth) {
+	.dropdown-submenu > a:after{
+		content: initial;
+	}
+}

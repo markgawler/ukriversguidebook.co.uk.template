@@ -18,7 +18,6 @@ $sitename = $app->getCfg ( 'sitename' );
 
 // Check for forum
 $itemid = $app->input->getCmd ( 'Itemid', '' );
-#$phpbbLayout = ($itemid == $this->params->get('forumItemId') ? 'phpbb-layout' : '');
 $phpbbPage = ($itemid == $this->params->get('forumItemId'));
 
 $doc->addStyleSheet ( 'templates/' . $this->template . '/css/template.min.css' );
@@ -32,9 +31,10 @@ $doc->addScript ( 'templates/' . $this->template . '/js/template.min.js' );
 $user = JFactory::getUser ();
 
 $fluid = '-fluid';
-// $fluid = '';
-$content_span="span9";
-$desktop = True;
+
+$desktop = False;
+$mobile = False;
+
 if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
 {
 	$dev_type ="Desktop";
@@ -44,23 +44,29 @@ if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
 else if ($_SERVER['HTTP_CLOUDFRONT_IS_TABLET_VIEWER']=='true')
 {
 	$dev_type ="Tablet";
-	$desktop = False;
 	
 }
 else if ($_SERVER['HTTP_CLOUDFRONT_IS_MOBILE_VIEWER']=='true')
 {
 	$dev_type ="Mobile";
-	$desktop = False;
+	$mobile = True;
 }
 else
 { 
-	$desktop = False;
+	$desktop = True;
 	$dev_type ="Other";
 }
 
 if ($phpbbPage && !$desktop){
-	$content_span="span12";
+	$asside = False;
+	$phpbbLayout = 'phpbb-layout';
+	$style = '#phpbb #wrap {min-width: 580px!important;} #phpbb dd.lastpost {width: 24%!important;;}';
+	$doc->addStyleDeclaration( $style );
+}else{
+	$asside = True;
+	$phpbbLayout = '';
 }
+
 
 ?>
 
@@ -75,8 +81,8 @@ if ($phpbbPage && !$desktop){
 <body>
 
 <!-- Headder -->
-	<div id="wrap-headder" class="container<?php echo ($fluid); ?> bg">
-	<?php echo $dev_type. ",  phpPage:" . $phpbbPage . ", contentspan:" . $content_span;?>
+	<div id="wrap-headder" class="container<?php echo ($fluid);?> <?php echo($phpbbLayout); ?> bg">
+	<?php echo $dev_type;?>
 		<div id="header" class="row<?php echo ($fluid); ?> logo">
 			<div class="span6">
 				<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
@@ -90,18 +96,21 @@ if ($phpbbPage && !$desktop){
 			</div>
 			<!-- end logo -->
 		</div>
-		<div id="banner" class="row<?php echo ($fluid); ?> banner">
-			<div id="banner-left" class="span6">
+		
+		<div id="banner" class="row<?php echo ($fluid); ?> banner">	
+			<div id="banner-left" class=<?php echo $mobile ? 'span12' : 'span6'; ?>>
 				<img class="img-responsive" src="http://placehold.it/570x80">
 			</div>
-			<div id="banner-right" class="span6">
-				<img class="img-responsive" src="http://placehold.it/570x80">
-			</div>
+			<?php if (!$mobile) :?>
+				<div id="banner-right" class="span6">
+					<img class="img-responsive" src="http://placehold.it/570x80">
+				</div>
+			<?php endif;?>
 		</div>
 	</div>
 
 	<!-- Body -->
-	<div id="wrap-body" class="container<?php echo ($fluid); ?> bg wrap-body">
+	<div id="wrap-body" class="container<?php echo ($fluid); ?> bg wrap-body <?php echo($phpbbLayout); ?>">
 		<!-- Navigation mainmenu-->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="navbar-inner">
@@ -167,13 +176,13 @@ if ($phpbbPage && !$desktop){
 
 		<div class="row<?php echo ($fluid); ?>">
 
-			<main id="content" class=<?php echo $content_span; ?>>
+			<main id="content" class=<?php echo $asside ? 'span9' : 'span12'; ?>>
 			<div class="pad-main">
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
 			</div>
 			</main>
-			<?php if ($desktop || !$phpbbPage) : ?>
+			<?php if ($asside) : ?>
 				<div id="aside" class="span3">
 					<jdoc:include type="modules" name="aside" style="well" />
 				</div>
@@ -185,8 +194,8 @@ if ($phpbbPage && !$desktop){
 
 	</div>
 	<!-- Footer -->
-	<footer class="footer" role="contentinfo">
-		<div class="container<?php echo ($fluid); ?>">
+	<footer class="footer container<?php echo ($fluid); ?> <?php echo($phpbbLayout); ?> " role="contentinfo">
+		<div>
 			<!-- <hr /> -->
 			<jdoc:include type="modules" name="footer" style="none" />
 			<p class="pull-right">
