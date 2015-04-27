@@ -22,7 +22,7 @@ if (!$is_riverguide){
 }
 $riverguid_data = RiverguideHelper::get_riverguides_for_category($this->category->id);
 $riverguides = $riverguid_data->guides;
-$diff_counts = $riverguid_data->diff_count;
+$grade_counts = $riverguid_data->grade_count;
 
 // Create some shortcuts.
 $params		= &$this->item->params;
@@ -81,9 +81,9 @@ if (!empty($this->items))
 	</fieldset>
 	<?php endif; ?>
 
-	<?php foreach ($diff_counts as $difficulty => $diff): ?>
+	<?php foreach ($grade_counts as $grade => $diff): ?>
 		<h3>
-		<?php echo JText::_('COM_UKRGB_RGDIFF_L'.$difficulty); ?>
+		<?php echo JText::_('COM_UKRGB_RGDIFF_L'.$grade); ?>
 		</h3>
 
 	
@@ -139,7 +139,7 @@ if (!empty($this->items))
 			<?php foreach ($this->items as $i => $article) : ?>
 			<?php $has_guide = !empty($riverguides[$article->id]);?>
 			
-			<?php if ($has_guide && $difficulty == $riverguides[$article->id]->dificulty):?>
+			<?php if ($has_guide && $grade == $riverguides[$article->id]->grade):?>
 				
 									
 				<?php if ($this->items[$i]->state == 0) : ?>
