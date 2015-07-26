@@ -68,7 +68,6 @@ if ($this->countModules( 'aside' ) == 0){
 }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,12 +95,12 @@ if ($this->countModules( 'aside' ) == 0){
 		</div>
 		
 		<div id="banner" class="row<?php echo ($fluid); ?> banner">	
-			<div id="banner-left" class=<?php echo $mobile ? 'span12' : 'span6'; ?>>
-				<img class="img-responsive" src="http://placehold.it/570x80">
+			<div id="banner-left" class="<?php echo $mobile ? 'span12' : 'span6'; ?> ">
+				<jdoc:include type="modules" name="banner-left" style="none" />
 			</div>
 			<?php if (!$mobile) :?>
 				<div id="banner-right" class="span6">
-					<img class="img-responsive" src="http://placehold.it/570x80">
+					<jdoc:include type="modules" name="banner-right" style="none" />
 				</div>
 			<?php endif;?>
 		</div>
