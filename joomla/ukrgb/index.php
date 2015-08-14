@@ -53,10 +53,9 @@ else
 	$desktop = True;
 	$dev_type ="Other";
 }
-
+$phpbbLayout = '';
 if ($phpbbPage){
 	$phpbbLayout = 'phpbb-layout';
-	$phpbbLayoutbody = 'phpbb-layout-body';
 	if (!$desktop){
 		$asside = False;
 		$style = '#phpbb #wrap {min-width: 580px!important;} #phpbb dd.lastpost {width: 24%!important;}';
@@ -65,11 +64,7 @@ if ($phpbbPage){
 		$asside = True;
 	}
 }
-else 
-{
-	$phpbbLayout = '';
-	$phpbbLayoutbody = '';
-}
+
 
 if ($this->countModules( 'aside' ) == 0){
 	$asside = False;
@@ -115,7 +110,7 @@ if ($this->countModules( 'aside' ) == 0){
 	</div>
 
 	<!-- Body -->
-	<div id="wrap-body" class="container<?php echo ($fluid); ?> bg wrap-body <?php echo($phpbbLayoutbody); ?>">
+	<div id="wrap-body" class="container<?php echo ($fluid); ?> bg wrap-body <?php echo($phpbbLayout); ?>">
 		<!-- Navigation mainmenu-->
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="navbar-inner">
