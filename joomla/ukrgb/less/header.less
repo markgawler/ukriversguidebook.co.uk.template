@@ -5,11 +5,20 @@
 	margin-bottom: 10px;
 }
 
+
+
 .banneritem {
 	img {
     	display: block;
     	margin: auto;
     	max-height: 80px;
+	}
+}
+
+// Hide right banner when span6 collapses
+@media (max-width: 767px) {
+	.banner-right.span6 {
+		display: none;
 	}
 }
 

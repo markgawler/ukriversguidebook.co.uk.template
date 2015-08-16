@@ -53,6 +53,7 @@ else
 	$desktop = True;
 	$dev_type ="Other";
 }
+//echo $dev_type;
 $phpbbLayout = '';
 if ($phpbbPage){
 	$phpbbLayout = 'phpbb-layout';
@@ -102,7 +103,7 @@ if ($this->countModules( 'aside' ) == 0){
 				<jdoc:include type="modules" name="banner-left" style="none" />
 			</div>
 			<?php if (!$mobile) :?>
-				<div id="banner-right" class="span6">
+				<div id="banner-right" class="banner-right span6">
 					<jdoc:include type="modules" name="banner-right" style="none" />
 				</div>
 			<?php endif;?>
@@ -205,6 +206,8 @@ if ($this->countModules( 'aside' ) == 0){
 		</div>
 	</footer>
 	<jdoc:include type="modules" name="debug" style="none" />
+	
+<script type="text/javascript" src="//s.skimresources.com/js/71630X1520410.skimlinks.js"></script>
 
 </body>
 </html>
