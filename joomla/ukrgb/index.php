@@ -31,11 +31,13 @@ $fluid = '-fluid';
 
 $desktop = False;
 $mobile = False;
+$asside = False;
 
 if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
 {
 	$dev_type ="Desktop";
 	$desktop = True;
+	$asside = True;
 	
 }
 else if ($_SERVER['HTTP_CLOUDFRONT_IS_TABLET_VIEWER']=='true')
@@ -61,8 +63,6 @@ if ($phpbbPage){
 		$asside = False;
 		$style = '#phpbb #wrap {min-width: 580px!important;} #phpbb dd.lastpost {width: 24%!important;}';
 		$doc->addStyleDeclaration( $style );
-	}else{
-		$asside = True;
 	}
 }
 
