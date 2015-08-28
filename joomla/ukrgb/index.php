@@ -32,28 +32,25 @@ $fluid = '-fluid';
 $desktop = False;
 $mobile = False;
 $asside = False;
-
-if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
-{
-	$dev_type ="Desktop";
-	$desktop = True;
-	$asside = True;
-	
-}
-else if ($_SERVER['HTTP_CLOUDFRONT_IS_TABLET_VIEWER']=='true')
-{
-	$dev_type ="Tablet";
-	
-}
-else if ($_SERVER['HTTP_CLOUDFRONT_IS_MOBILE_VIEWER']=='true')
-{
-	$dev_type ="Mobile";
-	$mobile = True;
-}
-else
-{ 
-	$desktop = True;
-	$dev_type ="Other";
+$dev_type ="Other";
+if (isset($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER'])){
+	if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
+	{
+		$dev_type ="Desktop";
+		$desktop = True;
+		$asside = True;
+		
+	}
+	else if ($_SERVER['HTTP_CLOUDFRONT_IS_TABLET_VIEWER']=='true')
+	{
+		$dev_type ="Tablet";
+		
+	}
+	else if ($_SERVER['HTTP_CLOUDFRONT_IS_MOBILE_VIEWER']=='true')
+	{
+		$dev_type ="Mobile";
+		$mobile = True;
+	}
 }
 //echo $dev_type;
 $phpbbLayout = '';
