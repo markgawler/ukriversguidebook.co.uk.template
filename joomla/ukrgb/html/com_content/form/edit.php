@@ -15,7 +15,6 @@ JHtml::_('behavior.calendar');
 JHtml::_('behavior.formvalidator');
 JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.modal', 'a.modal_jform_contenthistory');
-
 // Create shortcut to parameters.
 $params = $this->state->get('params');
 
@@ -68,6 +67,9 @@ JFactory::getDocument()->addScriptDeclaration("
 		<fieldset>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#editor" data-toggle="tab"><?php echo JText::_('COM_CONTENT_ARTICLE_CONTENT') ?></a></li>
+				<?php if ($this->form->getField('grade','attribs')):?>
+				<li><a href="#riverguide" data-toggle="tab"><?php echo JText::_('COM_UKRGB_RG_TAB') ?></a></li>
+				<?php endif; ?>
 				<?php if ($params->get('show_urls_images_frontend') ) : ?>
 				<li><a href="#images" data-toggle="tab"><?php echo JText::_('COM_CONTENT_IMAGES_AND_URLS') ?></a></li>
 				<?php endif; ?>
@@ -77,7 +79,6 @@ JFactory::getDocument()->addScriptDeclaration("
 				<li><a href="#publishing" data-toggle="tab"><?php echo JText::_('COM_CONTENT_PUBLISHING') ?></a></li>
 				<li><a href="#language" data-toggle="tab"><?php echo JText::_('JFIELD_LANGUAGE_LABEL') ?></a></li>
 				<li><a href="#metadata" data-toggle="tab"><?php echo JText::_('COM_CONTENT_METADATA') ?></a></li>
-				<li><a href="#riverguide" data-toggle="tab"><?php echo JText::_('COM_UKRGB_RG_TAB') ?></a></li>
 			</ul>
 
 			<div class="tab-content">
