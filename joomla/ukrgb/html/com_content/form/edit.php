@@ -15,6 +15,10 @@ JHtml::_('behavior.calendar');
 JHtml::_('behavior.formvalidator');
 JHtml::_('formbehavior.chosen', 'select');
 JHtml::_('behavior.modal', 'a.modal_jform_contenthistory');
+
+require_once JPATH_ROOT .'/components/com_ukrgb/helpers/riverguides.php';
+$is_riverguide = RiverguideHelper::is_riverguide_category($this->item->catid);
+
 // Create shortcut to parameters.
 $params = $this->state->get('params');
 
@@ -67,7 +71,7 @@ JFactory::getDocument()->addScriptDeclaration("
 		<fieldset>
 			<ul class="nav nav-tabs">
 				<li class="active"><a href="#editor" data-toggle="tab"><?php echo JText::_('COM_CONTENT_ARTICLE_CONTENT') ?></a></li>
-				<?php if ($this->form->getField('grade','attribs')):?>
+				<?php if ($is_riverguide):?>
 				<li><a href="#riverguide" data-toggle="tab"><?php echo JText::_('COM_UKRGB_RG_TAB') ?></a></li>
 				<?php endif; ?>
 				<?php if ($params->get('show_urls_images_frontend') ) : ?>
