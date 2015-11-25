@@ -56,11 +56,11 @@ if (isset($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER'])){
 $phpbbLayout = '';
 if ($phpbbPage){
 	$phpbbLayout = 'phpbb-layout';
-	if (!$desktop){
-		$asside = False;
-		$style = '#phpbb #wrap {min-width: 580px!important;} #phpbb dd.lastpost {width: 24%!important;}';
-		$doc->addStyleDeclaration( $style );
-	}
+	//if (!$desktop){
+	//	$asside = False;
+	//	$style = '#phpbb #wrap {min-width: 580px!important;} #phpbb dd.lastpost {width: 24%!important;}';
+	//	$doc->addStyleDeclaration( $style );
+	//}
 }
 
 
