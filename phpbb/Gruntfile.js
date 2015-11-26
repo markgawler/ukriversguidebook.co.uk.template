@@ -24,6 +24,20 @@ module.exports = function(grunt) {
           }
         }
     },
+    
+    synchard: {
+        remotedest: {
+            options: {
+                ssh: true,
+                privateKey: "/home/mrfg/.ssh/Area51.pem"
+            },
+            files: {
+                'ubuntu@area51.ukriversguidebook.co.uk:/var/www/ukrgb/phpbb/styles/': ['ukrgb-prosilver']
+            }
+        }
+    },
+
+    
     copy: { 
     	// make a copy of the prosilver theme to work with.
 		prosilver: {
@@ -49,13 +63,14 @@ module.exports = function(grunt) {
     watch: {
       styles: {
         files: ['less/**/*.less'], // which files to watch
-        tasks: ['less'],
+        tasks: ['less','synchard'],
         options: {
           nospawn: true
         }
       }
     }
   });
+  grunt.registerTask('sync', ['copy', 'less', 'synchard']);
 
   grunt.registerTask('default', ['copy', 'less', 'watch']);
 };
