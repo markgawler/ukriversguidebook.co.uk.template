@@ -5,7 +5,7 @@ div#phpbb {
 }
 
 #phpbb {
-
+ 
 @import (less) "prosilver/theme/common.css";
 @import (less) "prosilver/theme/links.css";
 @import (less) "prosilver/theme/content.css";
@@ -22,6 +22,7 @@ div#phpbb {
 		border: 0px;		// remove padding
 		margin: 0 auto;
 		padding: 0px;
+		max-width: inherit;
 	}
 	
 	.icon-home:before {
@@ -40,5 +41,9 @@ div#phpbb {
 	[class*=" icon-"] {		// fix padding round icons
 		height: initial;
 		width: initial;
+	}
+	
+	label {
+		display: inline;
 	}
 }

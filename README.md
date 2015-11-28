@@ -1,4 +1,4 @@
 ukriversguidebook.co.uk.template
 ================================
 
-Joomla3 and phpBB template for the guidebook site.
+Joomla3 and phpBB.1 template for the guidebook site.
