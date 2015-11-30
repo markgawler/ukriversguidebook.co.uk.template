@@ -2,6 +2,7 @@ div#phpbb {
 	line-height: normal;
 	padding: 0;
 	font-size: 10px;
+	
 }
 
 #phpbb {
@@ -35,7 +36,7 @@ div#phpbb {
 		content: "";		// use phpbb bookmark icon 
 	}
 	.icon-search:before{
-		content: "";		// use phpbb bookmark icon 
+		content: "";		// use phpbb search icon 
 	}
 	
 	[class*=" icon-"] {		// fix padding round icons
@@ -52,6 +53,19 @@ div#phpbb {
 	}
 	.button {
 		width: inherit; // Fix IE button widths
+	}
+	select {
+		width: inherit;
+ 		margin-bottom: inherit;		// Fix input boxes
+ 		
+	}
+	select, input[type=file], input[type=text], input[type=password], input[type=radio], input[type=checkbox]{
+    	height: inherit; 
+    	margin: inherit;		// Fix input boxes
+	}
+		
+	label, input, button, select, textarea {
+	    line-height: inherit;  // fix submit button, input box height
 	}
 }
 
