@@ -39,11 +39,19 @@ div#phpbb {
 	}
 	
 	[class*=" icon-"] {		// fix padding round icons
-		height: initial;
-		width: initial;
+		height: inherit;
 	}
 	
 	label {
-		display: inline;
+		display: inline;	// Layout of quick login input area
+	}
+	.dropdown {
+		li {
+			width: 100%;	// Fix width of dropdown for IE
+		}
+	}
+	.button {
+		width: inherit; // Fix IE button widths
 	}
 }
+
