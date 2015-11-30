@@ -62,7 +62,7 @@ module.exports = function(grunt) {
 	},
     watch: {
       styles: {
-        files: ['less/**/*.less'], // which files to watch
+        files: ['less/**/*.less','ukrgb-prosilver/template/**/*'], // which files to watch
         tasks: ['less','synchard'],
         options: {
           nospawn: true
