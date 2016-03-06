@@ -69,7 +69,21 @@ if ($this->countModules( 'aside' ) == 0){
 <head>
 <jdoc:include type="head" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google --> 
+<script>
+  if (window != top) top.location.href = location.href;
 
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+  ga('create', 'UA-26908210-1', 'auto');
+  ga('require', 'displayfeatures');
+  ga('set', '&uid', '<?php echo $user->id; ?>'); 
+  ga('send', 'pageview');
+
+</script>	
 </head>
 
 <body>
@@ -78,10 +92,7 @@ if ($this->countModules( 'aside' ) == 0){
 	<div id="wrap-headder" class="container<?php echo ($fluid);?> <?php echo($phpbbLayout); ?> bg">
 		<div id="header" class="row<?php echo ($fluid); ?> logo">
 			<div class="span6">
-				<!-- <img class="img-responsive" src="http://placehold.it/1170x100"> -->
-				<img class="img-responsive"
-					src="templates/<?php echo $this->template;?>/images/banner.jpg">
-				<!--  <jdoc:include type="modules" name="logo" style="xhtml" />	-->
+				<img class="img-responsive"	src="templates/<?php echo $this->template;?>/images/banner.jpg">
 			</div>
 			<div class="span6">
 				<h1>UKRGB</h1>
@@ -115,22 +126,14 @@ if ($this->countModules( 'aside' ) == 0){
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span>
 					</button>
-					<a class="brand" href="#">UKRGB</a>
+					<a class="brand" href="/">UKRGB</a>
 
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
 					<div class="nav-collapse collapse">
 						<jdoc:include type="modules" name="menu" style="none" />
-
-						<!-- <form class="navbar-form navbar-right" role="search">-->
-						<!-- 	<div class="form-group">-->
-						<!-- <jdoc:include type="modules" name="search" style="none" />-->
-						<!-- <input type="text" class="form-control" placeholder="Search"> -->
-						<!-- 	</div>-->
-						<!-- </form>-->
 						<ul class="nav pull-right">
-							<!-- <li class="navbar-form"><jdoc:include type="modules" name="search" style="none" /></li>-->
 							<!-- The drop down menu -->
 							<li class="dropdown">
 	          				<?php if ($user->name) {?>
@@ -200,21 +203,7 @@ if ($this->countModules( 'aside' ) == 0){
 	</footer>
 	<jdoc:include type="modules" name="debug" style="none" />
 
-<!-- Google --> 
-<script>
-  if (window != top) top.location.href = location.href;
 
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  
-  ga('create', 'UA-26908210-1', 'auto');
-  ga('require', 'displayfeatures');
-  ga('set', '&uid', '<?php echo $user->id; ?>'); 
-  ga('send', 'pageview');
-
-</script>	
 <script type="text/javascript" src="//s.skimresources.com/js/71630X1520410.skimlinks.js"></script>
 
 </body>
