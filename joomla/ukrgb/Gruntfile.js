@@ -2,10 +2,13 @@ module.exports = function(grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
+		RemoteHost: process.env.ukrgbRemoteHost,
+		RemoteUser: process.env.ukrgbRemoteUser,
+		privateKeyFile: process.env.ukrgbPrivateKeyFile,
 		pkg: grunt.file.readJSON('package.json'),
 		//uglify: {
 		//options: {
-		//	banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+		banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
 		//},
 		//build: {
 		//	src: 'src/<%= pkg.name %>.js',
@@ -15,7 +18,7 @@ module.exports = function(grunt) {
 		
 		concat : {
 			options : {
-				banner : '<%= banner %>\n<%= jqueryCheck %>',
+				//banner : '<%= banner %>\n<%= jqueryCheck %>',
 				stripBanners : false
 			},
 			ukrgb : {
@@ -143,14 +146,39 @@ module.exports = function(grunt) {
 					host: "ukrgb-joomla3.homedomain"
 				}
 			}
-		}
+		},
+		
+		synchard: {
+	        remotedest: {
+	            options: {
+	            	args: ['-av','--delete'],
+	                ssh: true,
+	                privateKey: "<%=privateKeyFile%>",
+	                exclude: [".git*","node_modules","less",'Gruntfile.js','package.json','ukrgb.zip']
+	            },
+	            files: {
+	            	'<%=RemoteUser%>@<%=RemoteHost%>:/var/www/ukrgb/joomla/templates/ukrgb/': ['.']
+	            }
+	        }
+	    },
+	    watch: {
+	        styles: {
+	          files: ['less/**/*','html/**/*','js/**/*','font/**/*','images/**/*','language/**/*'], // which files to watch
+	          tasks: ['less-compile', 'autoprefixer', 'csscomb', 'cssmin', 'synchard'],
+	          options: {
+	            nospawn: true
+	          }
+	        }
+	      },
+		
+		
 	});
 
 	// These plugins provide necessary tasks.
 	require('load-grunt-tasks')(grunt, {
 		scope : 'devDependencies'
 	});
-	require('time-grunt')(grunt);
+	//require('time-grunt')(grunt);
 
 	// Load the plugin that provides the "uglify" task.
 	//grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -166,6 +194,5 @@ module.exports = function(grunt) {
 
 	// Default task(s).
 	grunt.registerTask('dist', ['clean','dist-css','dist-js','compress']);
-	grunt.registerTask('default', ['clean','dist-css','rsync']);
-
+	grunt.registerTask('default', ['clean','dist-css','synchard','watch']);
 };

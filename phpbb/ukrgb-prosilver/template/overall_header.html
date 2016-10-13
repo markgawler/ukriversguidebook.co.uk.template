@@ -45,9 +45,18 @@
 	})(document);
 </script>
 <!-- ENDIF -->
+
+<link rel="stylesheet" href="/templates/ukrgb/css/template.min.css" type="text/css" />
+
+<script src="/media/jui/js/jquery.min.js" type="text/javascript"></script>
+<script src="/media/jui/js/jquery-noconflict.js" type="text/javascript"></script>
+<script src="/media/jui/js/jquery-migrate.min.js" type="text/javascript"></script>
+<script src="/media/jui/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="/templates/ukrgb/js/template.min.js" type="text/javascript"></script>
+
 <link href="{T_STYLESHEET_LINK}" rel="stylesheet">
 <link href="{T_STYLESHEET_LANG_LINK}" rel="stylesheet">
-<link href="{T_THEME_PATH}/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="all and (max-width: 700px), all and (max-device-width: 700px)">
+<link href="{T_THEME_PATH}/responsive.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet" media="all and (max-width: 700px)">
 
 <!-- IF S_CONTENT_DIRECTION eq 'rtl' -->
 	<link href="{T_THEME_PATH}/bidi.css?assets_version={T_ASSETS_VERSION}" rel="stylesheet">
@@ -69,9 +78,9 @@
 
 </head>
 <body class="nojs notouch section-{SCRIPT_NAME} {S_CONTENT_DIRECTION} {BODY_CLASS}">
-<div id="phpbb">
-<!-- EVENT overall_header_body_before -->
 
+<!-- EVENT overall_header_body_before -->
+<div id="phpbb">
 <div id="wrap">
 	<a id="top" class="anchor" accesskey="t"></a>
 	<div id="page-header">

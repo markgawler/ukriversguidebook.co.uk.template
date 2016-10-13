@@ -2,6 +2,9 @@ module.exports = function(grunt) {
   require('jit-grunt')(grunt);
 
   grunt.initConfig({
+	  RemoteHost: process.env.ukrgbRemoteHost,
+	  RemoteUser: process.env.ukrgbRemoteUser,
+	  privateKeyFile: process.env.ukrgbPrivateKeyFile,
     less: {
     	stylesheet: {
         options: {
@@ -28,11 +31,15 @@ module.exports = function(grunt) {
     synchard: {
         remotedest: {
             options: {
+            	//args: ['-av'],
+            	args: ['-av','--delete'],
                 ssh: true,
-                privateKey: "/home/mrfg/.ssh/Area51.pem"
+                privateKey: "<%=privateKeyFile%>"
+                //privateKey: "/home/mrfg/.ssh/Area51.pem"
             },
             files: {
-                'ubuntu@area51.ukriversguidebook.co.uk:/var/www/ukrgb/phpbb/styles/': ['ukrgb-prosilver']
+                //'ubuntu@area51.ukriversguidebook.co.uk
+            	'<%=RemoteUser%>@<%=RemoteHost%>:/var/www/ukrgb/phpbb/styles/': ['ukrgb-prosilver']
             }
         }
     },

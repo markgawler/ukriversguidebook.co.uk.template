@@ -57,10 +57,6 @@ defined('_JEXEC') or die;
 			echo '<span>' . $item->name . '</span>';
 		}
 
-		if (($key != $penult_item_key) || $show_last)
-		{
-			echo '<span>' . $separator . '</span>';
-		}
 
 		echo '</li>';
 	}
@@ -68,7 +64,15 @@ defined('_JEXEC') or die;
 	{
 		// Render last item if reqd.
 		echo '<li class="active">';
-		echo '<span>' . $item->name . '</span>';
+		if (!empty($item->link))
+		{
+			echo '<a href="' . $item->link . '">' . $item->name . '</a>';
+		}
+		else
+		{
+			echo '<p>' . $item->name . '</p>';
+		}
+					
 		echo '</li>';
 	}
 	endforeach; ?>

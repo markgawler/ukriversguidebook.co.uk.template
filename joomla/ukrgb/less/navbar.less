@@ -1,5 +1,16 @@
 @import (reference) "variables.less";
 
+
+// Fix Broken Less in BS2 
+#grid {
+    .core  {
+        .span(@gridColumns) {
+            width: (@gridColumnWidth * @gridColumns) + (@gridGutterWidth * (@gridColumns - 1));
+        }
+    }
+};
+
+
 .navbar {
 	margin-bottom: 10px;
 	font-size: 14px;

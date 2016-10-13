@@ -3,46 +3,61 @@
 @import (reference) "variables.less";
 @import (reference) "../../../../joomla-cms/media/jui/less/mixins.less";
 
-
-//.breadcrumb {
-//	background-color: @breadcrumb-bg;
-//	font-size: 12px;
-//	margin-bottom: 10px;
-	
-//	img {
-//		padding-left: 2px;
-//		vertical-align: initial;
-//	} 
-//	> li {
-//		+ li:before {
-//			padding: 0px 0px;
-//		}
-//	}
-//}
-
-
 .breadcrumb {
-  font-size: 12px;
+  font-size: 12px;  
   padding: 5px 15px;
   margin: 0 0 @baseLineHeight;
   list-style: none;
   background-color: @breadcrumb-bg;
   .border-radius(@baseBorderRadius);
   > li {
+    vertical-align: middle;
     display: inline-block;
     .ie7-inline-block();
-    //text-shadow: 0 1px 0 @white;
-    > .divider {
-      padding: 0 5px;
-      color: #ccc;
+  > .divider {
+   	font-size: 14px;
+    color: #105289;
+    background-color: @breadcrumb-bg;
+  	margin-right: 0px;
     }
   }
   > .active {
     color: @grayDark;
   }
   
-  img {
-	padding: 0 2px;
-	vertical-align: initial;
-  } 
+    
+  a::before {
+  	font-family: IcoMoon;
+  	font-size: 16px;
+    content: '\2023';
+    font-weight: bold;
+    padding: 0 .25em;
+    line-height: 20px;
+    vertical-align: bottom;  
+    }
+ 
+  p::before {
+  	font-family: IcoMoon;
+  	font-size: 16px;
+    content: '\2023';
+    font-weight: bold;
+    padding: 0 .25em;
+    line-height: 20px;
+    vertical-align: bottom;
+    }
+
+  p {
+  	margin: 0;
+  }
+ 
+  a:hover:before{
+      color: @linkColor;
+  }
+  a:hover{
+      text-decoration: none;  
+      }
+      
+  .crumb {
+  	margin-left: -4px;
+  }
 }
