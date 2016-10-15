@@ -141,9 +141,12 @@ if ($this->countModules( 'aside' ) == 0){
 	          					<a class="dropdown-toggle" data-toggle="dropdown"
 								href="#"><?php echo $user->name;?><span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>">Log out</a></li>
-									<li><a href="<?php echo JRoute::_('/forum/ucp.php?i=ucp_pm'); ?>">Private Messages</a></li>
-									<li><a href="<?php echo JRoute::_('index.php?option=com_users&lang=en&layout=edit&view=profile'); ?>">User Profile</a></li>
+								
+									<li><a href="<?php echo JRoute::_('/forum/ucp.php'); ?>"><i class="icon-cog"></i> User Control Panel</a></li>
+									<li><a href="<?php echo JRoute::_('index.php?option=com_users&lang=en&layout=edit&view=profile'); ?>"><i class="icon-user"></i> User Profile</a></li>
+									<li><a href="<?php echo JRoute::_('/forum/ucp.php?i=ucp_pm'); ?>"><i class="icon-mail"></i> Private Messages</a></li>
+									<li class="divider"></li>
+									<li><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>"><i class="icon-switch"></i> Log out</a></li>
 								</ul>
 	          				<?php } else {?> 
 	          				    <a class="dropdown-toggle" data-toggle="dropdown"
