@@ -33,3 +33,20 @@
 		content: initial;
 	}
 }
+
+// Show list item when navbar collapsed 
+.collapse-show {
+	@media (min-width: (@navbarCollapseWidth + 1 )) {
+		li {
+			display: none;
+		}
+	}
+}
+// Hide list item when navbar collapsed 
+.collapse-hide  {
+	@media (max-width: @navbarCollapseWidth) {
+		li {
+			display: none;
+		}
+	}
+}

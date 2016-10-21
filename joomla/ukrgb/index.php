@@ -126,6 +126,14 @@ if ($this->countModules( 'aside' ) == 0){
 						<span class="icon-bar"></span> 
 						<span class="icon-bar"></span>
 					</button>
+					<ul class="nav pull-right navbar-nav menu collapse-show ">
+						<?php if (!$user->name) {
+							$collapsehide = "collapse-hide"; ?>
+							<li><a href="<?php echo JRoute::_('forum/ucp.php?mode=login'); ?>"><i class="icon-switch"></i> Sign In</a></li>
+						<?php } else {
+							$collapsehide = ""; ?>
+	          			<?php }?>					
+					</ul>
 					<a class="brand" href="/">UKRGB</a>
 
 
@@ -133,7 +141,7 @@ if ($this->countModules( 'aside' ) == 0){
 					<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
 					<div class="nav-collapse collapse">
 						<jdoc:include type="modules" name="menu" style="none" />
-						<ul class="nav pull-right">
+						<ul class="nav pull-right <?php echo $collapsehide; ?>">
 							<!-- The drop down menu -->
 							<li class="dropdown">
 	          				<?php if ($user->name) {?>
@@ -150,7 +158,7 @@ if ($this->countModules( 'aside' ) == 0){
 								</ul>
 	          				<?php } else {?> 
 	          				    <a class="dropdown-toggle" data-toggle="dropdown"
-								href="#">Sign In <span class="caret"></span></a>
+								href="#"><i class="icon-switch"></i> Sign In <span class="caret"></span></a>
 								<div class="dropdown-menu"
 									style="padding: 15px; padding-bottom: 0px;">
 									<!-- Login form here -->

@@ -163,7 +163,7 @@ module.exports = function(grunt) {
 	    },
 	    watch: {
 	        styles: {
-	          files: ['less/**/*','html/**/*','js/**/*','font/**/*','images/**/*','language/**/*'], // which files to watch
+	          files: ['index.php','less/**/*','html/**/*','js/**/*','font/**/*','images/**/*','language/**/*'], // which files to watch
 	          tasks: ['less-compile', 'autoprefixer', 'csscomb', 'cssmin', 'synchard'],
 	          options: {
 	            nospawn: true
