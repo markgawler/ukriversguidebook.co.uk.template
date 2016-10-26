@@ -6,65 +6,13 @@ module.exports = function(grunt) {
 		RemoteUser: process.env.ukrgbRemoteUser,
 		privateKeyFile: process.env.ukrgbPrivateKeyFile,
 		pkg: grunt.file.readJSON('package.json'),
-		//uglify: {
-		//options: {
 		banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
-		//},
-		//build: {
-		//	src: 'src/<%= pkg.name %>.js',
-		//	dest: 'build/<%= pkg.name %>.min.js'
-		//},
+
 		// Task configuration.
-		
-		concat : {
-			options : {
-				//banner : '<%= banner %>\n<%= jqueryCheck %>',
-				stripBanners : false
-			},
-			ukrgb : {
-				src : [ 'airbox/js/airbox.js',
-						'slimbox2/src/slimbox2.js',
-						'slimbox2/src/autoload.js'],
-				dest : 'js/<%= pkg.name %>.js'
-			}
-		},
 
-		uglify : {
-			options : {
-				preserveComments : 'some'
-
-			},
-			ukrgb : {
-				src : '<%= concat.ukrgb.dest %>',
-				dest : 'js/<%= pkg.name %>.min.js'
-			}
-		},
-
-		copy : {
-			slimboxImages : {
-				expand : true,
-				src : 'slimbox2/css/*.gif',
-				dest : 'css/',
-				flatten : true
-			},
-			slimboxcss : {
-				expand : true,
-				src : 'slimbox2/css/slimbox2.css',
-				dest : 'less/',
-				flatten : true
-			}
-		},
-		rename: {
-			renameToLess: {
-				src: 'less/slimbox2.css',
-				dest: 'less/slimbox2.less'
-			}
-		},
-		
-		
 		
 		clean : {
-			dist : ['css/template*.css','css/template*.map', 'ukrgb.zip','js/template*.js','css/*.gif','less/slimbox2.less']
+			dist : ['css/template*.css','css/template*.map', 'ukrgb.zip','css/*.gif']
 			},
 		less : {
 			compileCore : {
@@ -128,33 +76,18 @@ module.exports = function(grunt) {
 					archive: 'ukrgb.zip'
 				},
 				files: [
-				        {src: ['**', '!less/**', '!node_modules/**','!*.zip','!airbox/**','!slimbox2/**'],	  dest: '.'}
+				        {src: ['**', '!less/**', '!node_modules/**','!*.zip'], dest: '.'}
 				        ]
 			}
 		},
 
-		rsync: {
-			options: {
-				args: ["--verbose"],
-				exclude: [".git*","node_modules","less",'Gruntfile.js','package.json','ukrgb.zip'],
-				recursive: true
-			},
-			dist: {
-				options: {
-					src: ".",
-					dest: "/http/ukrgb/joomla/templates/ukrgb/", 
-					host: "ukrgb-joomla3.homedomain"
-				}
-			}
-		},
-		
 		synchard: {
 	        remotedest: {
 	            options: {
 	            	args: ['-av','--delete'],
 	                ssh: true,
 	                privateKey: "<%=privateKeyFile%>",
-	                exclude: [".git*","node_modules","less",'Gruntfile.js','package.json','ukrgb.zip']
+	                exclude: [".git*","node_modules","less",'Gruntfile.js','package.json']
 	            },
 	            files: {
 	            	'<%=RemoteUser%>@<%=RemoteHost%>:/var/www/ukrgb/joomla/templates/ukrgb/': ['.']
@@ -163,7 +96,7 @@ module.exports = function(grunt) {
 	    },
 	    watch: {
 	        styles: {
-	          files: ['index.php','less/**/*','html/**/*','js/**/*','font/**/*','images/**/*','language/**/*'], // which files to watch
+	          files: ['index.php','less/**/*','html/**/*','font/**/*','images/**/*','language/**/*'], // which files to watch
 	          tasks: ['less-compile', 'autoprefixer', 'csscomb', 'cssmin', 'synchard'],
 	          options: {
 	            nospawn: true
@@ -178,21 +111,13 @@ module.exports = function(grunt) {
 	require('load-grunt-tasks')(grunt, {
 		scope : 'devDependencies'
 	});
-	//require('time-grunt')(grunt);
-
-	// Load the plugin that provides the "uglify" task.
-	//grunt.loadNpmTasks('grunt-contrib-uglify');
 	
 	// CSS distribution task.
 	grunt.registerTask('less-compile', [ 'less:compileCore' ]);
-	grunt.registerTask('copy-sb', [ 'copy:slimboxImages','copy:slimboxcss','rename']);
 
-	grunt.registerTask('dist-css', [ 'copy-sb','less-compile', 'autoprefixer', 'csscomb', 'cssmin' ]);
-	
-	grunt.registerTask('dist-js', [ 'concat','uglify' ]);
-
+	grunt.registerTask('dist-css', [ 'less-compile', 'autoprefixer', 'csscomb', 'cssmin' ]);
 
 	// Default task(s).
-	grunt.registerTask('dist', ['clean','dist-css','dist-js','compress']);
+	grunt.registerTask('dist', ['clean','dist-css','compress']);
 	grunt.registerTask('default', ['clean','dist-css','synchard','watch']);
 };
