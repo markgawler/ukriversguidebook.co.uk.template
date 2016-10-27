@@ -22,8 +22,6 @@ $doc->addStyleSheet ( 'templates/' . $this->template . '/css/template.min.css' )
 // Add JavaScript Frameworks
 JHtml::_ ( 'bootstrap.framework' );
 
-$doc->addScript ( 'templates/' . $this->template . '/js/template.min.js' );
-
 // Add current user information
 $user = JFactory::getUser ();
 

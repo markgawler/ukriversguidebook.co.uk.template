@@ -67,6 +67,19 @@ module.exports = function(grunt) {
 			flatten : true
 		},
 	},
+	
+	compress: {
+		main: {
+			options: {
+				mode: 'tgz',
+				archive: 'ukrgb-prosilver.tar.gz'
+			    },
+			    files: [
+				        {src: ['ukrgb-prosilver/**'], dest: '.'}
+				        ]
+		 }
+	},
+	
     watch: {
       styles: {
         files: ['less/**/*.less','ukrgb-prosilver/template/**/*'], // which files to watch
@@ -78,6 +91,6 @@ module.exports = function(grunt) {
     }
   });
   grunt.registerTask('sync', ['copy', 'less', 'synchard']);
-
+  grunt.registerTask('dist', ['copy', 'less', 'compress']);
   grunt.registerTask('default', ['copy', 'less', 'watch']);
 };

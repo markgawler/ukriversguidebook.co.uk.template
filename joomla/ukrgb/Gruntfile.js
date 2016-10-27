@@ -75,9 +75,7 @@ module.exports = function(grunt) {
 				options: {
 					archive: 'ukrgb.zip'
 				},
-				files: [
-				        {src: ['**', '!less/**', '!node_modules/**','!*.zip'], dest: '.'}
-				        ]
+				files: [{src: ['**', '!less/**', '!node_modules/**','!*.zip'], dest: '.'}]
 			}
 		},
 
