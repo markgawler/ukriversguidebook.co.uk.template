@@ -35,10 +35,8 @@ module.exports = function(grunt) {
             	args: ['-av','--delete'],
                 ssh: true,
                 privateKey: "<%=privateKeyFile%>"
-                //privateKey: "/home/mrfg/.ssh/Area51.pem"
             },
             files: {
-                //'ubuntu@area51.ukriversguidebook.co.uk
             	'<%=RemoteUser%>@<%=RemoteHost%>:/var/www/ukrgb/phpbb/styles/': ['ukrgb-prosilver']
             }
         }
