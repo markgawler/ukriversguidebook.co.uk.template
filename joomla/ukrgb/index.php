@@ -80,7 +80,12 @@ if ($this->countModules( 'aside' ) == 0){
   ga('require', 'displayfeatures');
   ga('set', '&uid', '<?php echo $user->id; ?>'); 
   ga('send', 'pageview');
-
+  var trackOutboundLink = function(url) {
+	   ga('send', 'event', 'outbound', 'click', url, {
+	     'transport': 'beacon',
+	     'hitCallback': function(){document.location = url;}
+	   });
+	}
 </script>	
 </head>
 
