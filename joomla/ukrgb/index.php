@@ -82,8 +82,7 @@ if ($this->countModules( 'aside' ) == 0){
   ga('send', 'pageview');
   var trackOutboundLink = function(url) {
 	   ga('send', 'event', 'outbound', 'click', url, {
-	     'transport': 'beacon',
-	     'hitCallback': function(){document.location = url;}
+	     'transport': 'beacon'
 	   });
 	}
 </script>	
