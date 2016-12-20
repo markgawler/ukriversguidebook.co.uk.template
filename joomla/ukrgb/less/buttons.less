@@ -1,0 +1,17 @@
+@import (reference) "variables.less";
+@import (reference) "../../../../joomla-cms/media/jui/less/mixins.less";
+
+
+@btnFacebookBackground:              #3b5998;
+@btnFacebookBackgroundHighlight:     spin(@btnPrimaryBackground, 10%);
+
+@btnGoogleBackground:              #d34836;
+@btnGoogleBackgroundHighlight:     spin(@btnGoogleBackground, 10%);
+
+.btn-facebook {
+  .buttonBackground(@btnFacebookBackground, @btnFacebookBackgroundHighlight);
+}
+
+.btn-google {
+  .buttonBackground(@btnGoogleBackground, @btnGoogleBackgroundHighlight);
+}
