@@ -29,7 +29,7 @@ $fluid = '-fluid';
 
 $desktop = False;
 $mobile = False;
-$asside = False;
+$asside = True;
 $dev_type ="Other";
 if (isset($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER'])){
 	if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
@@ -189,11 +189,13 @@ if ($this->countModules( 'aside' ) == 0){
 			<main id="content" class=<?php echo $asside ? 'span9' : 'span12'; ?>>
 			<div class="pad-main">
 				<jdoc:include type="message" />
+				<jdoc:include type="modules" name="search_result" />
 				<jdoc:include type="component" />
 			</div>
 			</main>
 			<?php if ($asside) : ?>
 				<div id="aside" class="span3">
+					<jdoc:include type="modules" name="search_input" style="well" />
 					<jdoc:include type="modules" name="aside" style="well" />
 				</div>
 			<?php endif;?>

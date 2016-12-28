@@ -27,6 +27,8 @@
 		<position>aside</position>
 		<position>login</position>
 		<position>search</position>
+		<position>search_result</position>
+		<position>search_input</position>
 		<position>banner-left</position>
 		<position>banner-right</position>
 		<position>debug</position>
