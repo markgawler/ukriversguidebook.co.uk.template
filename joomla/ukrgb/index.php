@@ -29,7 +29,7 @@ $fluid = '-fluid';
 
 $desktop = False;
 $mobile = False;
-$asside = True;
+$asside = False;
 $dev_type ="Other";
 if (isset($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER'])){
 	if ($_SERVER['HTTP_CLOUDFRONT_IS_DESKTOP_VIEWER']=='true')
@@ -85,6 +85,13 @@ if ($this->countModules( 'aside' ) == 0){
 	     'transport': 'beacon'
 	   });
 	}
+</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-3113724332333762",
+    enable_page_level_ads: true
+  });
 </script>	
 </head>
 
