@@ -128,6 +128,20 @@ if ($this->countModules( 'aside' ) == 0){
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="navbar-inner">
 				<div class="container-fluid">
+
+					<!-- Login Modal -->
+					<div id="loginModal" class="modal hide fade " tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+					  <div class="modal-header">
+					    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					    <h3 id="loginModalLabel">Sign In</h3>
+					  </div>
+					  <div class="modal-body ">				
+						<!-- Login form here -->
+						<jdoc:include type="modules" name="login" style="none" />
+					  </div>		
+					</div>
+					<!-- end Login Modal -->			
+
 					<button type="button" class="btn btn-navbar" data-toggle="collapse"
 						data-target=".nav-collapse">
 						<span class="hidden">Toggle navigation</span> 
@@ -138,27 +152,22 @@ if ($this->countModules( 'aside' ) == 0){
 					<ul class="nav pull-right navbar-nav menu collapse-show ">
 						<?php if (!$user->name) {
 							$collapsehide = "collapse-hide"; ?>
-							<li><a href="<?php echo JRoute::_('forum/ucp.php?mode=login'); ?>"><i class="icon-switch"></i> Sign In</a></li>
+							<li><a data-toggle="modal" href="#loginModal"><i class="icon-switch"></i> Sign In</a></li>
 						<?php } else {
 							$collapsehide = ""; ?>
 	          			<?php }?>					
 					</ul>
 					<a class="brand" href="/">UKRGB</a>
 
-
-					<!-- Collect the nav links, forms, and other content for toggling -->
-					<!--<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> -->
 					<div class="nav-collapse collapse">
 						<jdoc:include type="modules" name="menu" style="none" />
 						<ul class="nav pull-right <?php echo $collapsehide; ?>">
 							<!-- The drop down menu -->
 							<li class="dropdown">
 	          				<?php if ($user->name) {?>
-	          					
 	          					<a class="dropdown-toggle" data-toggle="dropdown"
 								href="#"><?php echo $user->name;?><span class="caret"></span></a>
 								<ul class="dropdown-menu">
-								
 									<li><a href="<?php echo JRoute::_('/forum/ucp.php'); ?>"><i class="icon-cog"></i> User Control Panel</a></li>
 									<li><a href="<?php echo JRoute::_('index.php?option=com_users&lang=en&layout=edit&view=profile'); ?>"><i class="icon-user"></i> User Profile</a></li>
 									<li><a href="<?php echo JRoute::_('/forum/ucp.php?i=ucp_pm'); ?>"><i class="icon-mail"></i> Private Messages</a></li>
@@ -166,13 +175,7 @@ if ($this->countModules( 'aside' ) == 0){
 									<li><a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'. JSession::getFormToken().'=1'); ?>"><i class="icon-switch"></i> Log out</a></li>
 								</ul>
 	          				<?php } else {?> 
-	          				    <a class="dropdown-toggle" data-toggle="dropdown"
-								href="#"><i class="icon-switch"></i> Sign In <span class="caret"></span></a>
-								<div class="dropdown-menu"
-									style="padding: 15px; padding-bottom: 0px;">
-									<!-- Login form here -->
-									<jdoc:include type="modules" name="login" style="none" />
-								</div>
+	          				    <a data-toggle="modal" href="#loginModal"><i class="icon-switch"></i> Sign In </a>	          				    
 							<?php }?>
 							</li>
 						</ul>
