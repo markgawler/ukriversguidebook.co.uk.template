@@ -101,11 +101,11 @@ if ($this->countModules( 'aside' ) == 0){
 	<div id="wrap-headder" class="container<?php echo ($fluid);?> <?php echo($phpbbLayout); ?> bg">
 		<div id="header" class="row<?php echo ($fluid); ?> logo">
 			<div class="span6">
-				<img class="img-responsive"	src="templates/<?php echo $this->template;?>/images/banner.jpg">
+				<img class="img-responsive"	src="<?php echo JUri::root() . $this->params->get('logoFile');?>" alt="<?php echo $sitename;?>" />
 			</div>
 			<div class="span6">
-				<h1>UKRGB</h1>
-				<h1>The UK Rivers Guidebook</h1>
+				<h1><?php echo $this->params->get('sitetitle');?></h1>
+				<h1><?php echo $this->params->get('sitesubtitle');?></h1>
 			</div>
 			<!-- end logo -->
 		</div>

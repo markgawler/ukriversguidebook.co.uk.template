@@ -2,7 +2,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="2.5" type="template" client="site"  method="upgrade">
 	<name>ukrgb</name>
-	<version>1.1</version>
+	<version>1.2</version>
 	<creationDate>24/09/2014</creationDate>
 	<author>Mark Gawler</author>
 	<authorEmail>markg@wler.co.uk</authorEmail>
@@ -43,7 +43,19 @@
 			<fieldset name="advanced">
 				<field name="forumItemId" type="menuitem" default="0" label="Select Forum menu item" description="The menu item of the integrated phpBB forum" />
 				
-				
+				<field name="logoFile" class="" type="media" default=""
+					label="TPL_UKRGB_LOGO_LABEL"
+					description="TPL_UKRGB_LOGO_DESC" />
+					
+				<field name="sitetitle"  type="text" default=""
+					label="JGLOBAL_TITLE"
+					description="JFIELD_ALT_PAGE_TITLE_LABEL"
+					filter="string" />
+										
+				<field name="sitesubtitle"  type="text" default=""
+					label="TPL_UKRGB_SUBTITLE"
+					description="JFIELD_ALT_PAGE_TITLE_LABEL"
+					filter="string" />
 			</fieldset>
 		</fields>
 	</config>
