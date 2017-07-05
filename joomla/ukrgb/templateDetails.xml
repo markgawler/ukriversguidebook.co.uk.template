@@ -56,6 +56,10 @@
 					label="TPL_UKRGB_SUBTITLE"
 					description="JFIELD_ALT_PAGE_TITLE_LABEL"
 					filter="string" />
+
+				<field name="FacebookImage" class="" type="media" default=""
+					   label="TPL_UKRGB_FB_IMG_LABEL"
+					   description="TPL_UKRGB_FB_IMG_DESC" />
 			</fieldset>
 		</fields>
 	</config>
