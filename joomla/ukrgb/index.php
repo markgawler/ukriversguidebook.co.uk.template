@@ -67,6 +67,7 @@ if ($this->countModules( 'aside' ) == 0){
 <head>
 <jdoc:include type="head" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="origin">
 <!-- Google --> 
 <script>
   if (window != top) top.location.href = location.href;
