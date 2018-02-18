@@ -2,7 +2,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="2.5" type="template" client="site"  method="upgrade">
 	<name>ukrgb</name>
-	<version>1.2</version>
+	<version>1.3</version>
 	<creationDate>24/09/2014</creationDate>
 	<author>Mark Gawler</author>
 	<authorEmail>markg@wler.co.uk</authorEmail>
