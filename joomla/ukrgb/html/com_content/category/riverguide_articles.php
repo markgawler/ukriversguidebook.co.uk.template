@@ -13,14 +13,6 @@ require_once JPATH_ROOT .'/components/com_ukrgb/helpers/riverguides.php';
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
 
-
-/*$is_riverguide = RiverguideHelper::is_riverguide_category($this->category->id);
-if (!$is_riverguide){
-	// use default layout for non riverguides. 
-	include (__DIR__ . '/common_articles.php');
-	return;	
-}*/
-
 $riverguid_data = RiverguideHelper::get_riverguides_for_category($this->category->id);
 $riverguides = $riverguid_data->guides;
 $grade_counts = $riverguid_data->grade_count;

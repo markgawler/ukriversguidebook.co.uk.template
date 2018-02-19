@@ -101,8 +101,6 @@ module.exports = function(grunt) {
 	          }
 	        }
 	      },
-		
-		
 	});
 
 	// These plugins provide necessary tasks.
