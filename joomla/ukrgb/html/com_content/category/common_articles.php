@@ -19,6 +19,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 // Check for at least one editable article
 $isEditable = false;
+$article_summary_key = -1;
 
 if (!empty($this->items))
 {
@@ -30,17 +31,17 @@ if (!empty($this->items))
 			break;
 		}
 	}
-}
+
 
 // Find the index for the Article Summary custom field (ukrgb).
-$article_summary_key = -1;
-foreach ($this->items[0]->jcfields as $key => $jcfield)
-{
-	if ($jcfield->name == 'article-summary') {
-		$article_summary_key = $jcfield->id;
+	foreach ($this->items[0]->jcfields as $key => $jcfield)
+	{
+		if ($jcfield->name == 'article-summary')
+		{
+			$article_summary_key = $jcfield->id;
+		}
 	}
 }
-
 // For B/C we also add the css classes inline. This will be removed in 4.0.
 JFactory::getDocument()->addStyleDeclaration('
 .hide { display: none; }

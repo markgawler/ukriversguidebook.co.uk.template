@@ -11,9 +11,6 @@ defined('_JEXEC') or die;
 
 require_once JPATH_ROOT .'/components/com_ukrgb/helpers/riverguides.php';
 
-//JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-
-
 $is_riverguide = RiverguideHelper::is_riverguide_category($this->category->id);
 if ($is_riverguide)
 {
