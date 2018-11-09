@@ -19,7 +19,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
 
 // Check for at least one editable article
 $isEditable = false;
-$article_summary_key = -1;
+$article_summary_key = null;
 
 if (!empty($this->items))
 {
@@ -154,7 +154,9 @@ $tableClass = $this->params->get('show_headings') != 1 ? ' table-noheader' : '';
 						<?php echo $this->escape($article->title); ?>
 					</a>
 					<!-- ukrgb custom field for article summary -->
-					<?php echo ($article->jcfields[$article_summary_key]->value); ?>
+					<?php if ($article_summary_key !== null) : ?>
+						<?php echo ($article->jcfields[$article_summary_key]->value); ?>
+					<?php endif; ?>
 					<?php if (JLanguageAssociations::isEnabled() && $this->params->get('show_associations')) : ?>
 						<?php $associations = ContentHelperAssociation::displayAssociations($article->id); ?>
 						<?php foreach ($associations as $association) : ?>
