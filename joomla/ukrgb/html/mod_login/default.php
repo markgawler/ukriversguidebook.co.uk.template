@@ -125,14 +125,14 @@ JHtml::_('bootstrap.tooltip');
 <jdoc:include type="modules" name="login" style="none" />
 <div>
 	<p>Login or Register with:</p>
-	<a href="<?php echo JRoute::_('forum/app.php/oauth/facebook'); ?>">
+	<a href=<?php echo JRoute::_('/forum/app.php/oauth/facebook'); ?>>
 		<button  tabindex="1" name="Facebook" class="btn btn-facebook">Facebook</button>
 	</a> 
-<!-- 	<a href="<?php echo JRoute::_('forum/app.php/oauth/google'); ?>">
+<!-- 	<a href=<?php echo JRoute::_('/forum/app.php/oauth/google'); ?>>
 		<button  tabindex="2" name="Google" class="btn btn-google">Google</button>
 	</a>
 --> 
-	<a href=<?php echo JRoute::_('forum/ucp.php?mode=register');?>">
+	<a href=<?php echo JRoute::_('/forum/ucp.php?mode=register');?>>
 		<button  tabindex="2" name="Email" class="btn btn-info">Email</button>
 	</a>
 </div>
