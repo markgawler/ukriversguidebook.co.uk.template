@@ -107,8 +107,13 @@ JHtml::_('bootstrap.tooltip');
 					<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_USERNAME'); ?></a>
 				</li>
 				<li>
-					<a href="<?php echo JRoute::_('index.php?option=com_users&view=reset&Itemid=' . UsersHelperRoute::getResetRoute()); ?>">
+					<a href=<?php echo JRoute::_('/forum/ucp.php?mode=sendpassword');?>>
 					<?php echo JText::_('MOD_LOGIN_FORGOT_YOUR_PASSWORD'); ?></a>
+				</li>
+				<br>
+				<li>
+					<a href=<?php echo JRoute::_('/faq/passwords-and-accounts');?>>
+						<?php echo 'Other Login issue, see the FAQ'; ?></a>
 				</li>
 			</ul>
 		<input type="hidden" name="option" value="com_users" />
@@ -131,7 +136,7 @@ JHtml::_('bootstrap.tooltip');
 <!-- 	<a href=<?php echo JRoute::_('/forum/app.php/oauth/google'); ?>>
 		<button  tabindex="2" name="Google" class="btn btn-google">Google</button>
 	</a>
---> 
+-->
 	<a href=<?php echo JRoute::_('/forum/ucp.php?mode=register');?>>
 		<button  tabindex="2" name="Email" class="btn btn-info">Email</button>
 	</a>
